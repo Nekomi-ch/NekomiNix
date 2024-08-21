@@ -7,7 +7,7 @@
 {
 
   #NVIDIA
-  #hardware.graphics.enable = true;
+  hardware.opengl.enable = true;
   
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -111,6 +111,19 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  #hyprland
+  programs.hyprland = {
+    enable = true;
+    #nvidiaPatches = true;
+    xwayland.enable = true;
+  };
+
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -121,7 +134,6 @@
 
      libreoffice
      librewolf
-     nerdfonts
      git
      kitty
      kitty-themes
@@ -133,8 +145,21 @@
      gcc
 
      gnome.gnome-keyring
+     gnome3.gnome-tweaks
 
   #  wget
+
+  #  hyprland
+     rofi-wayland
+     swww
+     mako
+     waybar
+     hyprlock
+     wlogout
+  ];
+
+  fonts.packages = with pkgs; [
+  	nerdfonts
   ];
 
   #Experimental Features
@@ -169,3 +194,5 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
+  #hardware.graphics.enable = true;
+  #hardware.graphics.enable = true;
