@@ -55,10 +55,7 @@
 
     vdhcoapp
 
-  ];"group/hardware" "hyprland/workspaces"];
-        modules-center = ["hyprland/window" "clock"];
-        modules-right = ["backlight" "custom/volume" "battery"];
-
+  ];
 
   ## GTK Themes
 
@@ -322,6 +319,8 @@
   programs.waybar = {
     enable = true;
 
+    style = /home/nekomi/.config/home-manager/waybarstyle.css;
+
     settings = {
       mainBar = {
         layer = "top";
@@ -329,11 +328,12 @@
 
         modules-left = ["custom/nixos" "hyprland/workspaces"];
         modules-center = ["hyprland/window" "clock"];
-        modules-right = ["custom/volume" "backlight" "group/hardware" "network" "battery"];
+        modules-right = ["custom/volume" "backlight" "network" "battery" "group/hardware"];
 
         "custom/nixos" = {
           "format" = "󱄅 ";
           "tooltip" = false;
+          "on-click" = "wlogout";
         };
 
         "group/hardware" = {
@@ -408,7 +408,7 @@
         };
 
         "custom/volume" = {
-          "format" = "";
+          "format" = " ";
           "on-click" = "pwvucontrol";
           "tooltip" = false;
         };
@@ -446,12 +446,50 @@
 
       monitor = ",preferred,auto,1";
 
-      #dwindle = [
-      #  "pseudotile = yes"
-      #  "preserve_split = yes"
-      #];
+      exec-once = "swww init && waybar";
 
-      exec-once = "swww init";
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 3;
+
+        layout = "dwindle";
+
+        "col.active_border" = "rgb(${config.colorScheme.colors.base08}) rgb(${config.colorScheme.colors.base0A}) 45deg";
+        "col.inactive_border" = "rgb(${config.colorScheme.colors.base07}) rgb(${config.colorScheme.colors.base0B}) 45deg";
+      };
+
+      
+
+      misc = {
+        disable_hyprland_logo = "yes";
+      };
+
+      decoration = {
+        rounding = 7;
+
+        blur = {
+          enabled = true;
+          size = 7;
+          passes = 4;
+          new_optimizations = true;
+        };
+
+        drop_shadow = "yes";
+        shadow_range = 4;
+        shadow_render_power = 3;
+      };
+
+      animations = {
+        enabled = "yes";
+      };
+
+      windowrulev2 = [
+        "opacity 0.9 0.9,class:^(kitty)$"
+        "opacity 0.5 0.5,focus:0"
+        "opacity 1 1,fullscreen:1"
+      ];
+
 
       bind = [
         #main keybinds
