@@ -200,7 +200,9 @@
     theme = "nord.rasi";
   };
 
-  programs.mako = {
+  services.mako = {
+    enable = true;
+
     font = "Monofur Nerd Font 12";
 
     backgroundColor = "#${config.colorScheme.colors.base01}";
@@ -422,6 +424,8 @@
           "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰖩 ";
           "tooltip-format-ethernet" = "{ifname}  ";
           "tooltip-format-disconnected" = "Disconnected 󰖪 ";
+
+          "on-click" = "kitty --hold sh -c 'nmtui'";
         };
 
         "battery" = {
