@@ -53,7 +53,12 @@
     gnumake
     unzip
 
-  ];
+    vdhcoapp
+
+  ];"group/hardware" "hyprland/workspaces"];
+        modules-center = ["hyprland/window" "clock"];
+        modules-right = ["backlight" "custom/volume" "battery"];
+
 
   ## GTK Themes
 
@@ -179,12 +184,48 @@
   
   #hyprland stuff
   
+  programs.rofi.package = pkgs.rofi-wayland;
+
+  programs.rofi = {
+    enable = true;
+
+    font = "Monofur Nerd Font 16";
+
+    extraConfig = {
+      display-ssh = "";
+      display-run = "";
+      display-drun = "";
+      display-window = "";
+      display-combi = "";
+      show-icons = true;
+    };
+
+    theme = "nord.rasi";
+  };
+
+  programs.mako = {
+    font = "Monofur Nerd Font 12";
+
+    backgroundColor = "#${config.colorScheme.colors.base01}";
+    borderColor = "#${config.colorScheme.colors.base06}";
+    borderRadius = 5;
+    borderSize = 5;
+    textColor = "#${config.colorScheme.colors.base06}";
+ 
+    icons = true;
+    ignoreTimeout = true;
+    defaultTimeout = 5000;
+
+  };
+
+  
   programs.hyprlock = {
       enable = true;
 
       settings = {
         background = [
           {
+            text = "cmd[update=1000] echo $TIME";
             path = "~/Pictures/Nixos/Wallpapers/NixLogo.png";
             blur_size = 8;
             blur_passes = 1;
@@ -214,18 +255,18 @@
 
         label = [
           {
-            zindex = 1;
+            #zindex = 1;
 
             monitor = "";
             text = "NekomiOS V2 $TIME";
-            text_align = "left";
+            text_align = "center";
             color ="rgb(${config.colorScheme.colors.base06})";
             font_size = 75;
             font_family = "Monofur Nerd Font";
 
-            position = "0,-670";
+            position = "-700,0";
             halign = "center";
-            #valign = "center";
+            valign = "bottom";
 
             shadow_passes = 3;
             shadow_size = 5;
@@ -276,6 +317,126 @@
 
       };
     };
+
+    
+  programs.waybar = {
+    enable = true;
+
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+
+        modules-left = ["custom/nixos" "hyprland/workspaces"];
+        modules-center = ["hyprland/window" "clock"];
+        modules-right = ["custom/volume" "backlight" "group/hardware" "network" "battery"];
+
+        "custom/nixos" = {
+          "format" = "󱄅 ";
+          "tooltip" = false;
+        };
+
+        "group/hardware" = {
+          orientation = "horizontal";
+          modules = [
+            "cpu"
+            "memory"
+            "disk"
+          ];
+
+          drawer = {
+            "transition_duration" = 500;
+            "transition-left-to-right" = true;
+          };
+        };
+
+        "cpu" = {
+          "format" = "  {usage}%";
+          "tooltip" = false;
+
+          "on-click" = "kitty --hold sh -c 'btop'";
+        }; 
+
+        "memory" = {
+          "interval" = 30;
+          "format" = "  {percentage}%";
+          "tooltip" = false;
+
+          "on-click" = "kitty --hold sh -c 'btop'";
+        };
+
+        "disk" = {
+          "interval" = 60;
+          "format" = "  {percentage_used}%";
+          "unit" = "GB";
+          "tooltip" = true;
+          "tooltip-format" = "{specific_used:0.2f} GB / {specific_total:0.2f} GB";
+
+          "on-click" = "nautilus";
+        };
+
+        "hyprland/workspaces" = {
+          "disable-scroll" = true;
+          "all-outputs" = true;
+          "on-click" = "activate";
+          "warp-on-scroll" = true;
+          "format" = "{icon}";
+          "format-icons" = {
+            "active" = " ";
+          };
+        };
+
+        "hyprland/window" = {
+          "format" = "󰅬 {}";
+        };
+
+        "clock" = {
+          "interval" = 60;
+          "format" = " {:%H:%M}";
+
+          "tooltip" = true;
+          "tooltip-format"= "󰃭 {:%Y-%m-%d %a}";
+
+          "on-click" = "gnome-calendar";
+        };
+
+        "backlight" = {
+          "format" = "{icon} {percent}%";
+          "format-icons" = ["󰃞 " "󰃟 " "󰃠 "];
+          "on-scroll-up" = "brightnessctl s +5%";
+          "on-scroll-down" = "brightnessctl s 5%-";
+        };
+
+        "custom/volume" = {
+          "format" = "";
+          "on-click" = "pwvucontrol";
+          "tooltip" = false;
+        };
+
+        "network" = {
+          "format" = "{ifname}";
+          "format-wifi" = "󰖩 ";
+          "format-ethernet" = " ";
+          "format-disconnected" = "󰖪 ";
+          "tooltip-format" = "{ifname} via {gwaddr}  ";
+          "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰖩 ";
+          "tooltip-format-ethernet" = "{ifname}  ";
+          "tooltip-format-disconnected" = "Disconnected 󰖪 ";
+        };
+
+        "battery" = {
+          "interval" = 60;
+          "states" = {
+            "warning" = 30;
+            "critical" = 15;
+          };
+
+          "format" = "{capacity}% {icon}";
+          "format-icons" = [" " " " " " " " " "];
+        };
+      };
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
