@@ -189,15 +189,15 @@
     font = "Monofur Nerd Font 16";
 
     extraConfig = {
-      display-ssh = "";
-      display-run = "";
-      display-drun = "";
-      display-window = "";
-      display-combi = "";
+      display-ssh = " ";
+      display-run = " ";
+      display-drun = " ";
+      display-window = " ";
+      display-combi = " ";
       show-icons = true;
     };
 
-    theme = "nord.rasi";
+    theme = "./nord.rasi";
   };
 
   services.mako = {
@@ -225,10 +225,13 @@
         background = [
           {
             text = "cmd[update=1000] echo $TIME";
-            path = "~/Pictures/Nixos/Wallpapers/NixLogo.png";
+            path = "~/Pictures/Nixos/Wallpapers/BirthdayIdol.png";
             blur_size = 8;
-            blur_passes = 1;
+            blur_passes = 2;
             noise = 0.01;
+            brightness = 0.5;
+            vibrancy = 0.2;
+            vibrancy_darkness = 0.2;
           }
         ];
 
@@ -316,12 +319,48 @@
 
       };
     };
+  
 
+  programs.wlogout = {
+    enable = true;
+
+    layout = [
+      {
+        "label" = "shutdown";
+        "action" = "poweroff";
+        "text" = "Power Off";
+      }
+
+      {
+        "label" = "reboot";
+        "action" = "reboot";
+        "text" = "Restart";
+      }
+
+      {
+        "label" = "logout";
+        "action" = "loginctl kill-session $XDG_SESSION_ID";
+        "text" = "Logout";
+      }
+
+      {
+        "label" = "suspend";
+        "action" = "systemctl suspend";
+        "text" = "Suspend";
+      }
+
+      {
+        "label" = "lock";
+        "action" = "hyprlock";
+        "text" = "Lock";
+      }
+    ];
+  };
     
   programs.waybar = {
     enable = true;
 
-    style = /home/nekomi/.config/home-manager/waybarstyle.css;
+    style = ./waybarstyle.css;
 
     settings = {
       mainBar = {
@@ -492,6 +531,8 @@
         "opacity 0.9 0.9,class:^(kitty)$"
         "opacity 0.5 0.5,focus:0"
         "opacity 1 1,fullscreen:1"
+        "opacity 1 1,class:^(librewolf)$"
+        "opacity 1 1,class:^(firefox)$"
       ];
 
 
