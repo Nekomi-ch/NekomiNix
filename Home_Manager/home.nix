@@ -179,22 +179,23 @@
 
     settings = {
       format = #"[](#FDFDFD)"+
-               " $shell"+
+               "$shell"+
                "$nix_shell" +
-               "[](#29539D)"+
+               "[](bg:#1A1B2A fg:#29539D)"+
                "$username" +
                "[](bg:#FECE3E fg:#29539D)" +
                "$directory" +
                "[](bg:#29539D fg:#FECE3E)" +
                "$git_branch" +
                "$git_status" +
+               "[](bg:#FDFDFD fg:#29539D)" +
                "$time[ ](fg:#FDFDFD)";
 
       shell = {
-        fish_indicator = " ";
-        bash_indicator = " ";
+        fish_indicator = "   ";
+        bash_indicator = "   ";
         disabled = false;
-        style = "fg:#ECEFF4";
+        style = "bg:#1A1B2A fg:#ECEFF4";
       };
       
       username = {
@@ -233,12 +234,12 @@
 
       git_status = {
         style = "bg:#29539D fg:#ECEFF4";
-        format = "[$all_status$ahead_behind ]($style)";
+        format = "[ $all_status$ahead_behind ]($style)";
       };
 
       nix_shell = {
         symbol = "󱄅 ";
-        style = "fg:#ECEFF4";
+        style = "bg:#1A1B2A fg:#ECEFF4";
         format = "[󱄅 $state ]($style)";
       };
     };
