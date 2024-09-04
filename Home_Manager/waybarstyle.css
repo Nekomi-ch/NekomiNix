@@ -78,9 +78,22 @@
   margin-right: 5px;
 }
 
+#keyboard-state {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #d8dee9;
+  font-size: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
 /*right*/
 
-#custom-volume {
+#pulseaudio {
   border-radius: 10px;
   background-color: #3b4252; /*nord1*/
   font-size: 20px;
@@ -92,7 +105,7 @@
   margin-top: 6px;
 }
 
-#custom-volume:hover {
+#pulseaudio:hover {
   background-color: #8fbcbb;
   color: #3b4252;
 }

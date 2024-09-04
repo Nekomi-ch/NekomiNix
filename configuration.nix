@@ -54,8 +54,8 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/London";
-  #time.timeZone = "Asia/Hong_Kong";
+  #time.timeZone = "Europe/London";
+  time.timeZone = "Asia/Hong_Kong";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_HK.UTF-8";
@@ -99,7 +99,8 @@
   users.users.nekomi = {
     isNormalUser = true;
     description = "nekomi";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
+    shell = pkgs.fish;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -110,6 +111,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  programs.fish.enable = true;
 
   #hyprland
   programs.hyprland = {
@@ -147,19 +150,28 @@
      gnome.gnome-keyring
      gnome3.gnome-tweaks
 
-  #  wget
+     fish
+
+     starship
 
   #  hyprland
-     rofi-wayland
+     rofi-wayland	
+     wofi
      swww
      mako
      waybar
      hyprlock
      wlogout
+     brightnessctl
+     pwvucontrol
+     hyprshot
   ];
 
   fonts.packages = with pkgs; [
   	nerdfonts
+	noto-fonts-cjk-sans
+	noto-fonts-cjk-serif
+
   ];
 
   #Experimental Features

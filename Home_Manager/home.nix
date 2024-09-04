@@ -163,6 +163,87 @@
     theme = "Nord";
   };
 
+  programs.bash = {
+    enable = true;
+  };
+
+  programs.fish = {
+    enable = true;
+  };
+
+  programs.starship = {
+    enable = true;
+
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+
+    settings = {
+      format = #"[](#FDFDFD)"+
+               " $shell"+
+               "$nix_shell" +
+               "[](#29539D)"+
+               "$username" +
+               "[](bg:#FECE3E fg:#29539D)" +
+               "$directory" +
+               "[](bg:#29539D fg:#FECE3E)" +
+               "$git_branch" +
+               "$git_status" +
+               "$time[ ](fg:#FDFDFD)";
+
+      shell = {
+        fish_indicator = " ";
+        bash_indicator = " ";
+        disabled = false;
+        style = "fg:#ECEFF4";
+      };
+      
+      username = {
+        show_always = true;
+        style_user = "bg:#29539D fg:#ECEFF4";
+        style_root = "bg:#29539D fg:#ECEFF4";
+        format = "[$user ]($style)";
+      };
+
+      directory = {
+        style = "bg:#FECE3E fg:#2E3440";
+        format = "[ $path ]($style)";
+        truncation_length = 3;
+        truncation_symbol = "…/";
+      };
+
+      directory.substitutions = {
+        "Documents" = "󰈙 ";
+        "Downloads" = " ";
+        "Music" = " ";
+        "Pictures" = " ";
+      };
+
+      time = {
+        disabled = false;
+        time_format = "%R";   # Hour:Minute Format
+        style = "bg:#FDFDFD fg:#2E3440";
+        format = "[ $time ]($style)";
+      };
+
+      git_branch = {
+        symbol = " ";
+        style = "bg:#29539D fg:#ECEFF4";
+        format = "[ $symbol $branch ]($style)";
+      };
+
+      git_status = {
+        style = "bg:#29539D fg:#ECEFF4";
+        format = "[$all_status$ahead_behind ]($style)";
+      };
+
+      nix_shell = {
+        symbol = "󱄅 ";
+        style = "fg:#ECEFF4";
+        format = "[󱄅 $state ]($style)";
+      };
+    };
+  };
+
   programs.btop = {
     enable = true;
 
@@ -372,8 +453,8 @@
         position = "top";
 
         modules-left = ["custom/nixos" "hyprland/workspaces"];
-        modules-center = ["hyprland/window" "clock"];
-        modules-right = ["custom/volume" "backlight" "network" "battery" "group/hardware"];
+        modules-center = ["hyprland/window" "clock" "keyboard-state"];
+        modules-right = ["pulseaudio" "custom/volume" "backlight" "network" "battery" "group/hardware"];
 
         "custom/nixos" = {
           "format" = "󱄅 ";
@@ -445,6 +526,20 @@
           "on-click" = "gnome-calendar";
         };
 
+        "keyboard-state" = {
+          "numlock" = true;
+          "capslock" = true;
+          "format" = {
+            "numlock" = "Num {icon}";
+            "capslock" = "Caps {icon}";
+          };
+
+          "format-icons" = {
+            "locked" = " ";
+            "unlocked" = " ";
+          };
+        };
+
         "backlight" = {
           "format" = "{icon} {percent}%";
           "format-icons" = ["󰃞 " "󰃟 " "󰃠 "];
@@ -452,9 +547,16 @@
           "on-scroll-down" = "brightnessctl s 5%-";
         };
 
-        "custom/volume" = {
-          "format" = " ";
-          "on-click" = "pwvucontrol";
+        "pulseaudio" = {
+          "format" = "{volume}% {icon}";
+          "format-muted" = " ";
+          "format-icons" = {
+            "headphone" = " ";
+            "default" = " ";
+          };
+
+          "scroll-step" = 1;
+          "on-click" = "pwvucontrol"; 
           "tooltip" = false;
         };
 
@@ -537,6 +639,7 @@
         "opacity 1 1,fullscreen:1"
         "opacity 1 1,class:^(librewolf)$"
         "opacity 1 1,class:^(firefox)$"
+        "opacity 0.9 0.9,class:^(discord)$"
       ];
 
 
@@ -553,6 +656,7 @@
         "$main, P, pseudo," # dwindle
         "$main, J, togglesplit," # dwindle
         "$main, F, fullscreen"
+        "$main, S, exec, hyprshot -m region" #screenshot
 
         #movement keybinds
         "$main, left, movefocus, l"
