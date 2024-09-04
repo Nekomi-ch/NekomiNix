@@ -1,0 +1,89 @@
+window {
+  font-family: 'Monofur Nerd Font';
+	background-image: none;
+	transition: 20ms;
+  font-weight: normal;
+
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 20px;
+}
+
+button {
+  font-size:28px;
+	background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 40%;
+	background-position: center;
+	border-width: 2px;
+  border-radius: 20px;
+  color: #eceff4;
+  border-color: #eceff4;
+}
+
+button:hover,button:focus {
+  background-size: 70%;
+	transition: 20ms;
+  color: #2e3440;
+  border-width: 0px;
+  /*border-color: #2e3440;*/
+}
+
+/* 
+----------------------------------------------------- 
+Buttons
+----------------------------------------------------- 
+*/
+
+#lock {
+	margin: 5px;
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Lock.png");
+}
+
+#lock:hover,#lock:focus {
+	background-color: rgba(121, 169, 193, 0.8);
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Lock1.png");
+}
+
+#suspend {
+	margin: 5px;
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Sleep.png");
+}
+
+#suspend:hover,#suspend:focus {
+  background-color: rgba(163,190,140,0.8);
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Sleep1.png");
+}
+
+
+#logout {
+	margin: 5px;
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Logout.png");
+}
+
+#logout:hover,#logout:focus {
+  background-color: rgba(235,203,139,0.8);
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Logout1.png");
+}
+
+
+#reboot {
+	margin: 5px;
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Restart.png");
+}
+
+#reboot:hover,#reboot:focus {
+  background-color: rgba(208,135,112,0.8);
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Restart1.png");
+}
+
+
+#shutdown {
+	margin: 5px;
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Poweroff.png");
+}
+
+#shutdown:hover,#shutdown:focus {
+  background-color: rgba(191,97,106,0.8);
+  background-image: url("/home/nekomi/Pictures/Nixos/Icons/Poweroff1.png");
+}
+

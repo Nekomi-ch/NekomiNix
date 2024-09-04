@@ -324,11 +324,26 @@
   programs.wlogout = {
     enable = true;
 
+    style = ./wlogoutstyle.css;
+
     layout = [
       {
-        "label" = "shutdown";
-        "action" = "poweroff";
-        "text" = "Power Off";
+        "label" = "lock";
+        "action" = "hyprlock";
+        "text" = "Lock";
+      }
+
+      {
+        "label" = "suspend";
+        "action" = "systemctl suspend";
+        "text" = "Sleep";
+      }
+
+
+      {
+        "label" = "logout";
+        "action" = "loginctl kill-session $XDG_SESSION_ID";
+        "text" = "Logout";
       }
 
       {
@@ -338,22 +353,11 @@
       }
 
       {
-        "label" = "logout";
-        "action" = "loginctl kill-session $XDG_SESSION_ID";
-        "text" = "Logout";
+        "label" = "shutdown";
+        "action" = "poweroff";
+        "text" = "Power Off";
       }
 
-      {
-        "label" = "suspend";
-        "action" = "systemctl suspend";
-        "text" = "Suspend";
-      }
-
-      {
-        "label" = "lock";
-        "action" = "hyprlock";
-        "text" = "Lock";
-      }
     ];
   };
     
@@ -374,7 +378,7 @@
         "custom/nixos" = {
           "format" = "󱄅 ";
           "tooltip" = false;
-          "on-click" = "wlogout";
+          "on-click" = "wlogout -b 5";
         };
 
         "group/hardware" = {
