@@ -181,32 +181,35 @@
       format = #"[](#FDFDFD)"+
                "$shell"+
                "$nix_shell" +
-               "[](bg:#1A1B2A fg:#29539D)"+
+               #"[](bg:#1A1B2A fg:#474A53)"+
+               "[](fg:#474A53)"+
                "$username" +
-               "[](bg:#FECE3E fg:#29539D)" +
+               "[](bg:#AECCFF fg:#474A53)" +
                "$directory" +
-               "[](bg:#29539D fg:#FECE3E)" +
+               "[](bg:#2D55E5 fg:#AECCFF)" +
                "$git_branch" +
                "$git_status" +
-               "[](bg:#FDFDFD fg:#29539D)" +
-               "$time[ ](fg:#FDFDFD)";
+               "[](bg:#0A09A5 fg:#2D55E5)" +
+               "$time[ ](fg:#0A09A5)";
 
       shell = {
-        fish_indicator = "   ";
-        bash_indicator = "   ";
+        fish_indicator = "  ";
+        bash_indicator = "  ";
         disabled = false;
-        style = "bg:#1A1B2A fg:#ECEFF4";
+        style = "fg:#ECEFF4";
+
+        #style = "bg:#1A1B2A fg:#ECEFF4";
       };
       
       username = {
         show_always = true;
-        style_user = "bg:#29539D fg:#ECEFF4";
-        style_root = "bg:#29539D fg:#ECEFF4";
+        style_user = "bg:#474A53 fg:#ECEFF4";
+        style_root = "bg:#474A53 fg:#ECEFF4";
         format = "[$user ]($style)";
       };
 
       directory = {
-        style = "bg:#FECE3E fg:#2E3440";
+        style = "bg:#AECCFF fg:#2E3440";
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
@@ -222,18 +225,18 @@
       time = {
         disabled = false;
         time_format = "%R";   # Hour:Minute Format
-        style = "bg:#FDFDFD fg:#2E3440";
+        style = "bg:#0A09A5 fg:#EcEFF4";
         format = "[ $time ]($style)";
       };
 
       git_branch = {
         symbol = " ";
-        style = "bg:#29539D fg:#ECEFF4";
+        style = "bg:#2D55E5 fg:#ECEFF4";
         format = "[ $symbol $branch ]($style)";
       };
 
       git_status = {
-        style = "bg:#29539D fg:#ECEFF4";
+        style = "bg:#2D55E5 fg:#ECEFF4";
         format = "[ $all_status$ahead_behind ]($style)";
       };
 
@@ -531,8 +534,8 @@
           "numlock" = true;
           "capslock" = true;
           "format" = {
-            "numlock" = "Num {icon}";
-            "capslock" = "Caps {icon}";
+            "numlock" = "󰎥 {icon}";
+            "capslock" = "󰪛 {icon}";
           };
 
           "format-icons" = {
