@@ -36,6 +36,13 @@
     curl
     gh
     github-desktop
+    tmux
+
+    ncdu
+    ffmpeg-full
+    lsd
+    axel
+    tldr
 
     #gtk theme 
     nordic
@@ -169,6 +176,8 @@
 
   programs.fish = {
     enable = true;
+
+    interactiveShellInit = "set -U fish_greeting";
   };
 
   programs.starship = {
@@ -261,6 +270,21 @@
     enable = true;
     userName = "nekomi-ch";
     userEmail = "morvenhui@gmail.com";
+  };
+
+  programs.tmux = {
+    enable = true;
+
+    clock24 = true;
+    mouse = true;
+    keyMode = "vi";
+    shortcut = "s";
+
+    extraConfig = "set-option -g status-position top";
+
+    plugins = with pkgs.tmuxPlugins; [
+      nord
+    ];
   };
   
   

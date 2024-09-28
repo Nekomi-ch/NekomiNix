@@ -85,7 +85,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -99,7 +99,7 @@
   users.users.nekomi = {
     isNormalUser = true;
     description = "nekomi";
-    extraGroups = [ "networkmanager" "wheel" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "boinc" ];
     shell = pkgs.fish;
     packages = with pkgs; [
     #  thunderbird
@@ -126,6 +126,7 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  services.boinc.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -144,6 +145,7 @@
      neofetch
      yazi
      discord
+     vesktop
 
      gcc
 
@@ -165,6 +167,8 @@
      brightnessctl
      pwvucontrol
      hyprshot
+
+     boinc
   ];
 
   fonts.packages = with pkgs; [
@@ -173,6 +177,14 @@
 	noto-fonts-cjk-serif
 
   ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
 
   #Experimental Features
 
