@@ -178,6 +178,7 @@
     enable = true;
 
     interactiveShellInit = "set -U fish_greeting";
+    # shellInit = "tmux";
   };
 
   programs.starship = {
@@ -573,6 +574,8 @@
           "format-icons" = ["󰃞 " "󰃟 " "󰃠 "];
           "on-scroll-up" = "brightnessctl s +5%";
           "on-scroll-down" = "brightnessctl s 5%-";
+          "on-click" = "brightnessctl s +5%";
+          "on-click-right" = "brightnessctl s 5%-"; 
         };
 
         "pulseaudio" = {
@@ -623,7 +626,15 @@
 
       monitor = ",preferred,auto,1";
 
-      exec-once = "swww init && waybar";
+      exec-once = [
+        "swww init && waybar"
+        "[workspace 1 silent] kitty"
+        "[workspace 2 silent] librewolf"
+        "[workspace 3 silent] thunderbird"
+        #"[workspace 4 silent] boincmgr"
+      ];
+      
+
 
       general = {
         gaps_in = 5;
@@ -662,7 +673,7 @@
       };
 
       windowrulev2 = [
-        "opacity 0.9 0.9,class:^(kitty)$"
+        "opacity 0.87 0.87,class:^(kitty)$"
         "opacity 0.5 0.5,focus:0"
         "opacity 1 1,fullscreen:1"
         "opacity 1 1,class:^(librewolf)$"

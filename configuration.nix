@@ -128,6 +128,18 @@
 
   services.boinc.enable = true;
 
+  nixpkgs.overlays = let
+  nix-matlab = import (builtins.fetchTarball "https://gitlab.com/doronbehar/nix-matlab/-/archive/master/nix-matlab-master.tar.gz");
+  in [
+    nix-matlab.overlay
+    (
+      final: prev: {
+        # Your own overlays...
+      }
+    )
+  ];
+
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -169,6 +181,9 @@
      hyprshot
 
      boinc
+
+     matlab
+
   ];
 
   fonts.packages = with pkgs; [
@@ -177,6 +192,8 @@
 	noto-fonts-cjk-serif
 
   ];
+
+
 
   #xdg.portal = {
   #  enable = true;
