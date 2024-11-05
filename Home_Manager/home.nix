@@ -269,8 +269,6 @@
 
   programs.git = {
     enable = true;
-    userName = "nekomi-ch";
-    userEmail = "morvenhui@gmail.com";
   };
 
   programs.tmux = {
