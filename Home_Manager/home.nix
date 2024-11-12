@@ -37,6 +37,7 @@
     gh
     github-desktop
     tmux
+    fzf
 
     ncdu
     ffmpeg-full
@@ -61,7 +62,6 @@
     unzip
 
     vdhcoapp
-
   ];
 
   ## GTK Themes
@@ -495,6 +495,7 @@
             "cpu"
             "memory"
             "disk"
+            "temperature"
           ];
 
           drawer = {
@@ -610,7 +611,16 @@
           };
 
           "format" = "{capacity}% {icon}";
-          "format-icons" = [" " " " " " " " " "];
+          "format-charging" = "{capacity}% 󰂄";
+          "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󱟢"];
+        };
+
+        "temperature" = {
+          "thermal-zone" = 3;
+          "format" = "{temperatureC}󰔄 ";
+          "critial-threshold" = 69;
+          "format-critical" = "{temperatureC}󰔄 ";
+
         };
       };
     };
@@ -626,6 +636,7 @@
 
       exec-once = [
         "swww init && waybar"
+        "brightnessctl s 35%"
         "[workspace 1 silent] kitty"
         "[workspace 2 silent] librewolf"
         "[workspace 3 silent] thunderbird"

@@ -165,7 +165,7 @@
 }
 
 
-#cpu,#memory,#disk {
+#cpu,#memory,#disk,#temperature {
   border-radius: 10px;
   background-color: #3b4252; /*nord1*/
   font-size: 20px;
@@ -177,7 +177,7 @@
   margin-top: 6px;
 }
 
-#cpu:hover,#memory:hover,#disk:hover {
+#cpu:hover,#memory:hover,#disk:hover,#temperature:hover {
   background-color: #bf616a;
   color: #3b4252; /*nord1*/
 }

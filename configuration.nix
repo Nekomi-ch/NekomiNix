@@ -160,6 +160,7 @@
      vesktop
 
      gcc
+     python3
 
      gnome.gnome-keyring
      gnome3.gnome-tweaks
@@ -181,8 +182,17 @@
      hyprshot
 
      boinc
+     zlib
+     libz
+     zlib-ng
 
      matlab
+     julia-bin
+     cmake
+     mesa
+
+     tlp
+     powertop
 
   ];
 
@@ -216,6 +226,8 @@
   # };
 
   # List services that you want to enable:
+
+  services.envfs.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
