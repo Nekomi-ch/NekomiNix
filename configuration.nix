@@ -2,12 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: let
+  sddm-astronaut = pkgs.sddm-astronaut.override {
+    themeConfig = {
+      Background = "/usr/Birthday2024.png";
+      Font = "Monofur Nerd Font";
+      HeaderText = "Hewwo!";
+    };
+  };
 
-{
+in {
 
   #NVIDIA
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -63,14 +70,18 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # Enable and setting upSDDM
+  services.displayManager.sddm = {
+  	enable = true;
+	theme = "sddm-astronaut-theme";
+	package = pkgs.kdePackages.sddm;
+	extraPackages = [pkgs.sddm-astronaut];
+  };
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -127,6 +138,10 @@
   };
 
   services.boinc.enable = true;
+  services.boinc.extraEnvPackages = with pkgs; [libglvnd brotli];
+  programs.nix-ld.enable = true;
+
+  services.foldingathome.enable = true;
 
   nixpkgs.overlays = let
   nix-matlab = import (builtins.fetchTarball "https://gitlab.com/doronbehar/nix-matlab/-/archive/master/nix-matlab-master.tar.gz");
@@ -138,6 +153,12 @@
       }
     )
   ];
+
+  networking.extraHosts =
+  ''
+    128.95.160.156 boinc-files.bakerlab.org
+  '';
+
 
 
   # List packages installed in system profile. To search, run:
@@ -158,15 +179,17 @@
      yazi
      discord
      vesktop
+     zip
+     unzip
+     nautilus
+     sddm-astronaut
 
      gcc
-     python3
 
-     gnome.gnome-keyring
-     gnome3.gnome-tweaks
+     gnome-keyring
+     #gnome-tweaks
 
      fish
-
      starship
 
   #  hyprland
@@ -180,38 +203,29 @@
      brightnessctl
      pwvucontrol
      hyprshot
+     hyprcursor
 
      boinc
-     zlib
-     libz
-     zlib-ng
+     boinctui
+     fahclient
 
      matlab
      julia-bin
      cmake
      mesa
-
-     tlp
-     powertop
-
+     libpkgconf
   ];
 
   fonts.packages = with pkgs; [
   	nerdfonts
 	noto-fonts-cjk-sans
 	noto-fonts-cjk-serif
-
+	vistafonts
   ];
 
+  #Matlab bs 
 
 
-  #xdg.portal = {
-  #  enable = true;
-  #  extraPortals = [
-  #      pkgs.xdg-desktop-portal-gtk
-  #      pkgs.xdg-desktop-portal-hyprland
-  #  ];
-  #};
 
   #Experimental Features
 
@@ -227,7 +241,7 @@
 
   # List services that you want to enable:
 
-  services.envfs.enable = true;
+  # services.envfs.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -235,8 +249,11 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 80 443 ];
+  };
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

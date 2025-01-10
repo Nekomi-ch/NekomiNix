@@ -47,6 +47,8 @@
 
     #gtk theme 
     nordic
+    nordzy-icon-theme
+    nordzy-cursor-theme
 
     #LaTeX
     texliveFull
@@ -60,22 +62,26 @@
 
     gnumake
     unzip
+    wget
 
     vdhcoapp
   ];
 
   ## GTK Themes
 
-  gtk.enable = true;
+  gtk = {
+    enable = true;
 
-  #gtk.cursorTheme.package = pkgs.nordic;
-  #gtk.cursorTheme.name = "Nordic";
+    cursorTheme.package = pkgs.nordzy-cursor-theme;
+    cursorTheme.name = "Nordzy-cursors";
 
-  gtk.theme.package = pkgs.nordic;
-  gtk.theme.name = "Nordic";
+    theme.package = pkgs.nordic;
+    theme.name = "Nordic";
 
-  gtk.iconTheme.package = pkgs.nordic;
-  gtk.iconTheme.name = "Nordic";
+    iconTheme.package = pkgs.nordzy-icon-theme;
+    iconTheme.name = "Nordzy-icon";
+  };
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -177,7 +183,11 @@
   programs.fish = {
     enable = true;
 
-    interactiveShellInit = "set -U fish_greeting";
+    interactiveShellInit = "set -U fish_greeting";  
+
+    shellAbbrs = {
+      ls = "lsd";
+    };
     # shellInit = "tmux";
   };
 
@@ -269,6 +279,8 @@
 
   programs.git = {
     enable = true;
+    userName = "nekomi-ch";
+    userEmail = "morvenhui@gmail.com";
   };
 
   programs.tmux = {
@@ -279,7 +291,12 @@
     keyMode = "vi";
     shortcut = "s";
 
-    extraConfig = "set-option -g status-position top";
+    extraConfig = "
+      set-option -g status-position top \n
+      set -g base-index 1 \n
+      setw -g pane-base-index 1
+      "
+    ;
 
     plugins = with pkgs.tmuxPlugins; [
       nord
@@ -634,6 +651,11 @@
 
       monitor = ",preferred,auto,1";
 
+      env = [
+        "HYPRCURSOR_THEME,Nordzy-cursors"
+        "HYPRCURSOR_SIZE,24"
+      ];
+
       exec-once = [
         "swww init && waybar"
         "brightnessctl s 35%"
@@ -643,8 +665,6 @@
         #"[workspace 4 silent] boincmgr"
       ];
       
-
-
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -656,8 +676,7 @@
         "col.inactive_border" = "rgb(${config.colorScheme.colors.base07}) rgb(${config.colorScheme.colors.base0B}) 45deg";
       };
 
-      
-
+    
       misc = {
         disable_hyprland_logo = "yes";
       };
@@ -705,6 +724,7 @@
         "$main, J, togglesplit," # dwindle
         "$main, F, fullscreen"
         "$main, S, exec, hyprshot -m region" #screenshot
+        "$main, ESCAPE, exec, wlogout -b 5" #wlogout
 
         #movement keybinds
         "$main, left, movefocus, l"
