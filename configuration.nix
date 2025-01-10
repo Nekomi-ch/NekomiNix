@@ -5,7 +5,7 @@
 { config, pkgs, ... }: let
   sddm-astronaut = pkgs.sddm-astronaut.override {
     themeConfig = {
-      Background = "/usr/Birthday2024.png";
+      Background = "/usr/share/Birthday2024.png";
       Font = "Monofur Nerd Font";
       HeaderText = "Hewwo!";
     };
