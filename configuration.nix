@@ -227,7 +227,18 @@ in {
 	vistafonts
   ];
 
-  #Matlab bs 
+  #Garbage collector
+  #nix.gc = {
+  #	automatic = true;
+  #	dates = "weekly";
+  #	options = "--delete-older-than 180d";
+  #};
+
+  #nix.optimise = {
+  #	automatic = true;
+  #	interval = {Weekday = 7}
+  #};
+
 
 
 
