@@ -5,12 +5,11 @@
 { config, pkgs, ... }: let
   sddm-astronaut = pkgs.sddm-astronaut.override {
     themeConfig = {
-      #Background = "/usr/share/Birthday2024.png";
+      Background = "/etc/nixos/Birthday2024.png";
       Font = "Monofur Nerd Font";
       HeaderText = "Hewwo!";
     };
   };
-
 in {
 
   #NVIDIA
