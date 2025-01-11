@@ -78,6 +78,8 @@ in {
 	extraPackages = [pkgs.sddm-astronaut];
   };
 
+  services.xserver.desktopManager.gnome.enable = true;
+
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
@@ -187,7 +189,9 @@ in {
      gcc
 
      gnome-keyring
-     #gnome-tweaks
+     gnupg
+     pass
+     git-credential-manager
 
      fish
      starship
