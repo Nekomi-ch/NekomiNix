@@ -12,15 +12,13 @@
   };
 in {
 
-  #NVIDIA
-  hardware.graphics.enable = true;
-  
+  #NVIDIA 
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -28,10 +26,18 @@ in {
 
   hardware.nvidia.prime ={
 
-    sync.enable = true;
+  offload = {
+  	enable = true;
+	enableOffloadCmd = true;
+  };
+
 
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
+  };
+
+  hardware.graphics = {
+  	enable = true;
   };
   
 
@@ -77,7 +83,7 @@ in {
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-all;
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
 
   # Configure keymap in X11
@@ -211,7 +217,8 @@ in {
 
      boinc
      boinctui
-     fahclient
+     xorg.libX11
+     libGLU
 
      matlab
      julia-bin
