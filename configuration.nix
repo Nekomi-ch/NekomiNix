@@ -111,6 +111,11 @@ in {
     #media-session.enable = true;
   };
 
+  # USB
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -175,7 +180,6 @@ in {
      home-manager
 
      neovim
-     pkgs.vimPlugins.LazyVim
 
      libreoffice
      librewolf
@@ -184,6 +188,7 @@ in {
      kitty-themes
      thunderbird
      neofetch
+     viu
      yazi
      discord
      vesktop
@@ -201,6 +206,9 @@ in {
 
      fish
      starship
+
+     udisks
+     udiskie
 
   #  hyprland
      rofi-wayland	
