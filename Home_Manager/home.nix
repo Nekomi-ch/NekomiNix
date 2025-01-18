@@ -82,7 +82,6 @@
     iconTheme.name = "Nordzy-icon";
   };
 
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -124,6 +123,10 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
   };
 
   programs.yazi = {
@@ -187,6 +190,8 @@
 
     shellAbbrs = {
       ls = "lsd";
+      vi = "nvim";
+      vim = "nvim";
     };
     # shellInit = "tmux";
   };
@@ -723,7 +728,7 @@
         "$main, P, pseudo," # dwindle
         "$main, J, togglesplit," # dwindle
         "$main, F, fullscreen"
-        "$main, S, exec, hyprshot -m region" #screenshot
+        "$main, S, exec, hyprshot -o ~/Pictures/Screenshots -m region" #screenshot
         "$main, ESCAPE, exec, wlogout -b 5" #wlogout
 
         #movement keybinds
