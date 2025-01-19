@@ -19,6 +19,21 @@
 
   imports = [
     inputs.nix-colors.homeManagerModules.default
+    ./kitty.nix
+    ./gtk.nix
+    ./yazi.nix
+    ./fish.nix
+    ./neovim.nix
+    ./bash.nix
+    ./starship.nix
+    ./hyprlock.nix
+    ./waybar.nix
+    ./wlogout.nix
+    ./git.nix
+    ./btop.nix
+    ./tmux.nix
+    ./rofi.nix
+    ./mako.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
@@ -36,7 +51,7 @@
     curl
     gh
     github-desktop
-    tmux
+    tmux 
     fzf
 
     ncdu
@@ -67,20 +82,6 @@
     vdhcoapp
   ];
 
-  ## GTK Themes
-
-  gtk = {
-    enable = true;
-
-    cursorTheme.package = pkgs.nordzy-cursor-theme;
-    cursorTheme.name = "Nordzy-cursors";
-
-    theme.package = pkgs.nordic;
-    theme.name = "Nordic";
-
-    iconTheme.package = pkgs.nordzy-icon-theme;
-    iconTheme.name = "Nordzy-icon";
-  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -119,535 +120,11 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
-
-  programs.yazi = {
-    enable = true;
-    
-    settings = {
-      manager = {
-        show_hidden = true;
-	      sort_by = "natural";
-	      sort_sensitive = true;
-      };
-
-      opener = {
-        edit = [
-	        {run = "nvim $@"; block = true;}
-	      ];
-
-        open = [
-          {run = "okular $@"; block = true;}
-        ];
-      };
-
-      open = {
-        prepend_rules = [
-          {name = "*.pdf"; use = "open";}
-          {name = "*.tex"; use = "edit";}
-        ];
-
-        append_rules = [
-          {name = "*"; use = "edit";}
-        
-        ];
-      };
-    };
-  };
-  
-  programs.kitty = {
-    enable = true;
-
-    #font.package = pkgs.nerdfonts;
-    #font.name = "SpaceMono";
-    font = {
-      #name = "Space Mono nerd font";
-      
-      name = "3270 nerd font";
-      size = 15;
-    };
-    shellIntegration.enableFishIntegration = true;
-
-    theme = "Nord";
-  };
-
-  programs.bash = {
-    enable = true;
-  };
-
-  programs.fish = {
-    enable = true;
-
-    interactiveShellInit = "set -U fish_greeting";  
-
-    shellAbbrs = {
-      ls = "lsd";
-      vi = "nvim";
-      vim = "nvim";
-    };
-    # shellInit = "tmux";
-  };
-
-  programs.starship = {
-    enable = true;
-
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-
-    settings = {
-      format = #"[](#FDFDFD)"+
-               "$shell"+
-               "$nix_shell" +
-               #"[](bg:#1A1B2A fg:#474A53)"+
-               "[](fg:#474A53)"+
-               "$username" +
-               "[](bg:#AECCFF fg:#474A53)" +
-               "$directory" +
-               "[](bg:#2D55E5 fg:#AECCFF)" +
-               "$git_branch" +
-               "$git_status" +
-               "[](bg:#0A09A5 fg:#2D55E5)" +
-               "$time[ ](fg:#0A09A5)";
-
-      shell = {
-        fish_indicator = "  ";
-        bash_indicator = "  ";
-        disabled = false;
-        style = "fg:#ECEFF4";
-
-        #style = "bg:#1A1B2A fg:#ECEFF4";
-      };
-      
-      username = {
-        show_always = true;
-        style_user = "bg:#474A53 fg:#ECEFF4";
-        style_root = "bg:#474A53 fg:#ECEFF4";
-        format = "[$user ]($style)";
-      };
-
-      directory = {
-        style = "bg:#AECCFF fg:#2E3440";
-        format = "[ $path ]($style)";
-        truncation_length = 3;
-        truncation_symbol = "…/";
-      };
-
-      directory.substitutions = {
-        "Documents" = "󰈙 ";
-        "Downloads" = " ";
-        "Music" = " ";
-        "Pictures" = " ";
-      };
-
-      time = {
-        disabled = false;
-        time_format = "%R";   # Hour:Minute Format
-        style = "bg:#0A09A5 fg:#EcEFF4";
-        format = "[ $time ]($style)";
-      };
-
-      git_branch = {
-        symbol = " ";
-        style = "bg:#2D55E5 fg:#ECEFF4";
-        format = "[ $symbol $branch ]($style)";
-      };
-
-      git_status = {
-        style = "bg:#2D55E5 fg:#ECEFF4";
-        format = "[ $all_status$ahead_behind ]($style)";
-      };
-
-      nix_shell = {
-        symbol = "󱄅 ";
-        style = "bg:#1A1B2A fg:#ECEFF4";
-        format = "[󱄅 $state ]($style)";
-      };
-    };
-  };
-
-  programs.btop = {
-    enable = true;
-
-    settings = {
-      color_theme = "nord";
-      theme_background = true;
-    };
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "nekomi-ch";
-    userEmail = "morvenhui@gmail.com";
-  };
-
-  programs.tmux = {
-    enable = true;
-
-    clock24 = true;
-    mouse = true;
-    keyMode = "vi";
-    shortcut = "s";
-
-    extraConfig = "
-      set-option -g status-position top \n
-      set -g base-index 1 \n
-      setw -g pane-base-index 1
-      "
-    ;
-
-    plugins = with pkgs.tmuxPlugins; [
-      nord
-    ];
-  };
-  
   
   #hyprland stuff
-  
-  programs.rofi.package = pkgs.rofi-wayland;
 
-  programs.rofi = {
-    enable = true;
 
-    font = "Monofur Nerd Font 16";
-
-    extraConfig = {
-      display-ssh = " ";
-      display-run = " ";
-      display-drun = " ";
-      display-window = " ";
-      display-combi = " ";
-      show-icons = true;
-    };
-
-    theme = "./nord.rasi";
-  };
-
-  services.mako = {
-    enable = true;
-
-    font = "Monofur Nerd Font 12";
-
-    backgroundColor = "#${config.colorScheme.colors.base01}";
-    borderColor = "#${config.colorScheme.colors.base06}";
-    borderRadius = 5;
-    borderSize = 5;
-    textColor = "#${config.colorScheme.colors.base06}";
- 
-    icons = true;
-    ignoreTimeout = true;
-    defaultTimeout = 5000;
-
-  };
-
-  
-  programs.hyprlock = {
-      enable = true;
-
-      settings = {
-        background = [
-          {
-            text = "cmd[update=1000] echo $TIME";
-            path = "~/Pictures/Nixos/Wallpapers/BirthdayIdol.png";
-            blur_size = 8;
-            blur_passes = 2;
-            noise = 0.01;
-            brightness = 0.5;
-            vibrancy = 0.2;
-            vibrancy_darkness = 0.2;
-          }
-        ];
-
-        image = [
-          {
-            monitor = "";
-            path = "~/Pictures/Nixos/NekomiHead.png";
-            size = 350;
-            rounding = -1;
-            border_size = 6;
-            border_color = "rgb(${config.colorScheme.colors.base06})";
-
-            position = "0,300";
-            halign = "center";
-            valign = "center";
-
-            shadow_passes = 3;
-            shadow_size = 5;
-            shadow_color = "rgb(${config.colorScheme.colors.base00})";
-          }
-        ];
-
-
-        label = [
-          {
-            #zindex = 1;
-
-            monitor = "";
-            text = "NekomiOS V2 $TIME";
-            text_align = "center";
-            color ="rgb(${config.colorScheme.colors.base06})";
-            font_size = 75;
-            font_family = "Monofur Nerd Font";
-
-            position = "-700,0";
-            halign = "center";
-            valign = "bottom";
-
-            shadow_passes = 3;
-            shadow_size = 5;
-            shadow_color = "rgb(${config.colorScheme.colors.base00})";
-          }
-        ];
-
-
-
-        input-field = [
-          {
-            size = "200, 50";
-            outline_thickness = 3;
-            dots_size = 0.33; # Scale of input-field height, 0.2 - 0.8
-            dots_spacing = 0.15; # Scale of dots' absolute size, 0.0 - 1.0
-            dots_ceqnter = "falseq";
-            dots_rounding = -1; # -1 default circle, -2 follow input-field rounding
-            outer_color = "rgb(${config.colorScheme.colors.base00})";
-            inner_color = "rgb(${config.colorScheme.colors.base06})";
-            font_color = "rgb(${config.colorScheme.colors.base01})";
-            fade_on_empty = "false";
-            placeholder_text = "<i>Input Password...</i>"; # Text rendered in the input box when it's empty.
-            hide_input = "false";
-            rounding = -1; # -1 means complete rounding (circle/oval)
-            check_color = "rgb(${config.colorScheme.colors.base0D})";
-            fail_color = "rgb(${config.colorScheme.colors.base08})"; # if authentication failed, changes outer_color and fail message color
-            fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>"; # can be set to empty
-            fail_timeout = 2000; # milliseconds before fail_text and fail_color disappears
-            fail_transition = 300; # transition time in ms between normal outer_color and fail_color
-            capslock_color = "rgb(${config.colorScheme.colors.base0A})"; 
-            numlock_color = "rgb(${config.colorScheme.colors.base0A})"; 
-            bothlock_color = "rgb(${config.colorScheme.colors.base0A})";  # when both locks are active. -1 means don't change outer color (same for above)
-            invert_numlock = "false"; # change color if numlock is off
-            swap_font_color = "false"; # see below
-
-
-            position = "0, -70";
-            halign = "center";
-            valign = "center";
-
-            shadow_passes = 3;
-            shadow_size = 5;
-            shadow_color = "rgb(${config.colorScheme.colors.base00})";
-
-          }
-        ];
-
-
-      };
-    };
-  
-
-  programs.wlogout = {
-    enable = true;
-
-    style = ./wlogoutstyle.css;
-
-    layout = [
-      {
-        "label" = "lock";
-        "action" = "hyprlock";
-        "text" = "Lock";
-      }
-
-      {
-        "label" = "suspend";
-        "action" = "systemctl suspend";
-        "text" = "Sleep";
-      }
-
-
-      {
-        "label" = "logout";
-        "action" = "loginctl kill-session $XDG_SESSION_ID";
-        "text" = "Logout";
-      }
-
-      {
-        "label" = "reboot";
-        "action" = "reboot";
-        "text" = "Restart";
-      }
-
-      {
-        "label" = "shutdown";
-        "action" = "poweroff";
-        "text" = "Power Off";
-      }
-
-    ];
-  };
-    
-  programs.waybar = {
-    enable = true;
-
-    style = ./waybarstyle.css;
-
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-
-        modules-left = ["custom/nixos" "hyprland/workspaces"];
-        modules-center = ["hyprland/window" "clock" "keyboard-state"];
-        modules-right = ["pulseaudio" "custom/volume" "backlight" "network" "battery" "group/hardware"];
-
-        "custom/nixos" = {
-          "format" = "󱄅 ";
-          "tooltip" = false;
-          "on-click" = "wlogout -b 5";
-        };
-
-        "group/hardware" = {
-          orientation = "horizontal";
-          modules = [
-            "cpu"
-            "memory"
-            "disk"
-            "temperature"
-          ];
-
-          drawer = {
-            "transition_duration" = 500;
-            "transition-left-to-right" = true;
-          };
-        };
-
-        "cpu" = {
-          "format" = "  {usage}%";
-          "tooltip" = false;
-
-          "on-click" = "kitty --hold sh -c 'btop'";
-        }; 
-
-        "memory" = {
-          "interval" = 30;
-          "format" = "  {percentage}%";
-          "tooltip" = false;
-
-          "on-click" = "kitty --hold sh -c 'btop'";
-        };
-
-        "disk" = {
-          "interval" = 60;
-          "format" = "  {percentage_used}%";
-          "unit" = "GB";
-          "tooltip" = true;
-          "tooltip-format" = "{specific_used:0.2f} GB / {specific_total:0.2f} GB";
-
-          "on-click" = "nautilus";
-        };
-
-        "hyprland/workspaces" = {
-          "disable-scroll" = true;
-          "all-outputs" = true;
-          "on-click" = "activate";
-          "warp-on-scroll" = true;
-          "format" = "{icon}";
-          "format-icons" = {
-            "active" = " ";
-          };
-        };
-
-        "hyprland/window" = {
-          "format" = "󰅬 {}";
-        };
-
-        "clock" = {
-          "interval" = 60;
-          "format" = " {:%H:%M}";
-
-          "tooltip" = true;
-          "tooltip-format"= "󰃭 {:%Y-%m-%d %a}";
-
-          "on-click" = "gnome-calendar";
-        };
-
-        "keyboard-state" = {
-          "numlock" = true;
-          "capslock" = true;
-          "format" = {
-            "numlock" = "󰎥 {icon}";
-            "capslock" = "󰪛 {icon}";
-          };
-
-          "format-icons" = {
-            "locked" = " ";
-            "unlocked" = " ";
-          };
-        };
-
-        "backlight" = {
-          "format" = "{icon} {percent}%";
-          "format-icons" = ["󰃞 " "󰃟 " "󰃠 "];
-          "on-scroll-up" = "brightnessctl s +5%";
-          "on-scroll-down" = "brightnessctl s 5%-";
-          "on-click" = "brightnessctl s +5%";
-          "on-click-right" = "brightnessctl s 5%-"; 
-        };
-
-        "pulseaudio" = {
-          "format" = "{volume}% {icon}";
-          "format-muted" = " ";
-          "format-icons" = {
-            "headphone" = " ";
-            "default" = " ";
-          };
-
-          "scroll-step" = 1;
-          "on-click" = "pwvucontrol"; 
-          "tooltip" = false;
-        };
-
-        "network" = {
-          "format" = "{ifname}";
-          "format-wifi" = "󰖩 ";
-          "format-ethernet" = " ";
-          "format-disconnected" = "󰖪 ";
-          "tooltip-format" = "{ifname} via {gwaddr}  ";
-          "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰖩 ";
-          "tooltip-format-ethernet" = "{ifname}  ";
-          "tooltip-format-disconnected" = "Disconnected 󰖪 ";
-
-          "on-click" = "kitty --hold sh -c 'nmtui'";
-        };
-
-        "battery" = {
-          "interval" = 60;
-          "states" = {
-            "warning" = 30;
-            "critical" = 15;
-          };
-
-          "format" = "{capacity}% {icon}";
-          "format-charging" = "{capacity}% 󰂄";
-          "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󱟢"];
-        };
-
-        "temperature" = {
-          "thermal-zone" = 3;
-          "format" = "{temperatureC}󰔄 ";
-          "critial-threshold" = 69;
-          "format-critical" = "{temperatureC}󰔄 ";
-
-        };
-      };
-    };
-  };
-
+   
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -677,8 +154,8 @@
 
         layout = "dwindle";
 
-        "col.active_border" = "rgb(${config.colorScheme.colors.base08}) rgb(${config.colorScheme.colors.base0A}) 45deg";
-        "col.inactive_border" = "rgb(${config.colorScheme.colors.base07}) rgb(${config.colorScheme.colors.base0B}) 45deg";
+        "col.active_border" = "rgb(${config.colorScheme.palette.base08}) rgb(${config.colorScheme.palette.base0A}) 45deg";
+        "col.inactive_border" = "rgb(${config.colorScheme.palette.base07}) rgb(${config.colorScheme.palette.base0B}) 45deg";
       };
 
     
@@ -775,7 +252,6 @@
         "$main, mouse:273, resizewindow"
       ];
     };
-
 
   };
 }
