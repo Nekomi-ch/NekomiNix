@@ -130,7 +130,7 @@
           "tooltip-format-ethernet" = "{ifname}  ";
           "tooltip-format-disconnected" = "Disconnected 󰖪 ";
 
-          "on-click" = "kitty --hold sh -c 'nmtui'";
+          "on-click" = "nm-connection-editor";
         };
 
         "battery" = {

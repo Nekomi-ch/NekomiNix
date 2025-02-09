@@ -69,6 +69,7 @@
     texliveFull
     vimPlugins.vimtex
     okular
+		zathura
 
     #random
     pipes
@@ -80,6 +81,11 @@
     wget
 
     vdhcoapp
+
+		#language servers
+		matlab-language-server
+		nil
+		ltex-ls
   ];
 
 
