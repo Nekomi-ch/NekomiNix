@@ -198,11 +198,13 @@ in {
      sddm-astronaut
 
      gcc
+     python3Full
 
      gnome-keyring
      gnupg
      pass
      git-credential-manager
+     networkmanagerapplet
 
      fish
      starship
@@ -233,6 +235,8 @@ in {
      cmake
      mesa
      libpkgconf
+
+     nix-ld
   ];
 
   fonts.packages = with pkgs; [
