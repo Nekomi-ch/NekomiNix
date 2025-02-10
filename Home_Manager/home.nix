@@ -60,11 +60,6 @@
     axel
     tldr
 
-    #gtk theme 
-    nordic
-    nordzy-icon-theme
-    nordzy-cursor-theme
-
     #LaTeX
     texliveFull
     vimPlugins.vimtex

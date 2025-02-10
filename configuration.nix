@@ -2,15 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }: let
-  sddm-astronaut = pkgs.sddm-astronaut.override {
-    themeConfig = {
-      Background = "/etc/nixos/Birthday2024.png";
-      Font = "Monofur Nerd Font";
-      HeaderText = "Hewwo!";
-    };
-  };
-in {
+{ config, pkgs, ... }:{
 
   #NVIDIA 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -71,12 +63,35 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable and setting upSDDM
-  services.displayManager.sddm = {
+  # Enable and setting up lightdm
+  services.xserver.displayManager.lightdm = {
   	enable = true;
-	theme = "sddm-astronaut-theme";
-	package = pkgs.kdePackages.sddm;
-	extraPackages = [pkgs.sddm-astronaut];
+	background = ./Birthday2024.png;
+
+	greeters.slick = {
+		enable = true;
+
+		cursorTheme = {
+			package = pkgs.nordzy-cursor-theme;
+			name = "Nordzy-cursors";
+		};
+
+		iconTheme = {
+			package = pkgs.nordzy-icon-theme;
+			name = "Nordzy-icon";
+		};
+
+
+		theme = {
+			package = pkgs.nordic;
+			name = "Nordic";
+		};
+
+		font = {
+			package = pkgs.nerdfonts;
+			name = "Monofur Nerd Font";
+		};
+	};
   };
 
   #services.xserver.desktopManager.gnome.enable = true;
@@ -172,14 +187,17 @@ in {
     128.95.160.156 boinc-files.bakerlab.org
   '';
 
-
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      home-manager
-
      neovim
+
+     lightdm
+     lightdm-slick-greeter
+     nordzy-cursor-theme
+     nordzy-icon-theme
+     nordic
 
      libreoffice
      librewolf
@@ -195,7 +213,6 @@ in {
      zip
      unzip
      nautilus
-     sddm-astronaut
 
      gcc
      python3Full
@@ -205,6 +222,7 @@ in {
      pass
      git-credential-manager
      networkmanagerapplet
+     seahorse
 
      fish
      starship
@@ -257,8 +275,6 @@ in {
   #	automatic = true;
   #	interval = {Weekday = 7}
   #};
-
-
 
 
   #Experimental Features
