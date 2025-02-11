@@ -34,6 +34,7 @@
     ./tmux.nix
     ./rofi.nix
     ./mako.nix
+    ./fastfetch.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
