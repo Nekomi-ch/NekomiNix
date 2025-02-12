@@ -204,8 +204,9 @@
      git
      kitty
      kitty-themes
+     imagemagick
      thunderbird
-     neofetch
+     fastfetch
      viu
      yazi
      discord
