@@ -122,7 +122,7 @@
 
 				{
 					type = "colors";
-					symbol = " ";
+					symbol = "circle";
 				}
 			];
 		};
