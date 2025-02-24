@@ -8,7 +8,7 @@
     theme.package = pkgs.nordic;
     theme.name = "Nordic";
 
-    iconTheme.package = pkgs.nordzy-icon-theme;
-    iconTheme.name = "Nordzy-icon";
+		#iconTheme.package = pkgs.nordzy-icon-theme;
+		#iconTheme.name = "Nordzy-icon";
   };
 }

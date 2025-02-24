@@ -68,7 +68,7 @@
   	enable = true;
 	background = ./Birthday2024.png;
 
-	greeters.slick = {
+	greeters.gtk = {
 		enable = true;
 
 		cursorTheme = {
@@ -76,21 +76,28 @@
 			name = "Nordzy-cursors";
 		};
 
-		iconTheme = {
-			package = pkgs.nordzy-icon-theme;
-			name = "Nordzy-icon";
-		};
-
-
 		theme = {
 			package = pkgs.nordic;
 			name = "Nordic";
 		};
 
-		font = {
-			package = pkgs.nerdfonts;
-			name = "Monofur Nerd Font";
-		};
+		clock-format = "%d-%m-%Y %H:%M";
+
+		indicators = [
+			"~host"
+			"~spacer"
+			"~clock"
+			"~spacer"
+			"~session"
+			"~language"
+			"~a11y"
+			"~power"
+		];
+
+		extraConfig = "
+			font-name=MonofurNerdFont \n
+			default-user-image=/etc/nixos/NekomiHead.png
+		";
 	};
   };
 
@@ -172,7 +179,7 @@
   services.foldingathome.enable = true;
 
   nixpkgs.overlays = let
-  nix-matlab = import (builtins.fetchTarball "https://gitlab.com/doronbehar/nix-matlab/-/archive/master/nix-matlab-master.tar.gz");
+    nix-matlab = import (builtins.fetchTarball "https://gitlab.com/doronbehar/nix-matlab/-/archive/master/nix-matlab-master.tar.gz");
   in [
     nix-matlab.overlay
     (
@@ -181,6 +188,7 @@
       }
     )
   ];
+
 
   networking.extraHosts =
   ''
@@ -194,7 +202,7 @@
      neovim
 
      lightdm
-     lightdm-slick-greeter
+     lightdm-gtk-greeter
      nordzy-cursor-theme
      nordzy-icon-theme
      nordic
