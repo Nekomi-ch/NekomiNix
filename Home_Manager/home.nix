@@ -201,7 +201,7 @@
         "$main, L, exec, hyprlock"
         "$main, M, exec, wlogout --protocol layer-shell" # show the logout window
         "$main SHIFT, M, exit," # Exit Hyprland all together no (force quit Hyprland)
-        "$main, E, exec, nautilus"
+        "$main, E, exec, nemo"
         "$main, V, togglefloating," # Allow a window to float
         "$main, R, exec, rofi -show drun" # Show the graphical app launcher
         "$main, P, pseudo," # dwindle

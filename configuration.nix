@@ -212,16 +212,16 @@
      git
      kitty
      kitty-themes
-     imagemagick
      thunderbird
      fastfetch
-     viu
      yazi
      discord
      vesktop
      zip
      unzip
-     nautilus
+     nemo-with-extensions
+     mpv
+     nsxiv
 
      gcc
      python3Full
@@ -254,8 +254,6 @@
 
      boinc
      boinctui
-     xorg.libX11
-     libGLU
 
      matlab
      julia-bin
