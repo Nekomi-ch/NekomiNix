@@ -5,6 +5,10 @@
 { config, pkgs, ... }:{
 
   #NVIDIA 
+
+  boot.kernelParams = [
+    "nvidia.NVreg_EnableGpuFirmware=0"
+  ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
@@ -30,9 +34,9 @@
 
   hardware.graphics = {
   	enable = true;
+	extraPackages = with pkgs; [
+	];
   };
-  
-
   
   imports =
     [ # Include the results of the hardware scan.
@@ -173,10 +177,15 @@
   };
 
   services.boinc.enable = true;
-  services.boinc.extraEnvPackages = with pkgs; [libglvnd brotli];
-  programs.nix-ld.enable = true;
+  services.boinc.extraEnvPackages = with pkgs; [
+  	libglvnd
+	brotli
+  ];
 
-  services.foldingathome.enable = true;
+  #nix-ld
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+  ];
 
   nixpkgs.overlays = let
     nix-matlab = import (builtins.fetchTarball "https://gitlab.com/doronbehar/nix-matlab/-/archive/master/nix-matlab-master.tar.gz");
@@ -193,7 +202,18 @@
   networking.extraHosts =
   ''
     128.95.160.156 boinc-files.bakerlab.org
+    128.95.160.156 bwsrv1.bakerlab.org
   '';
+
+  # Undervolting 
+  services.undervolt = {
+  	enable = true;
+	package = pkgs.undervolt;
+	coreOffset = 0;
+	gpuOffset = -50;
+	temp = 70;
+  };
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -209,6 +229,7 @@
 
      libreoffice
      librewolf
+     brave
      git
      kitty
      kitty-themes
@@ -252,20 +273,24 @@
      hyprshot
      hyprcursor
 
-     boinc
      boinctui
+     undervolt
+     s-tui
+     stress
+     podman
 
      matlab
      julia-bin
      cmake
-     mesa
      libpkgconf
 
      nix-ld
+     obs-studio
   ];
 
   fonts.packages = with pkgs; [
-  	nerdfonts
+	nerd-fonts._3270
+	nerd-fonts.monofur
 	noto-fonts-cjk-sans
 	noto-fonts-cjk-serif
 	vistafonts
