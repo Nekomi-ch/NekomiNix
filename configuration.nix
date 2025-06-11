@@ -67,45 +67,11 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable and setting up lightdm
-  services.xserver.displayManager.lightdm = {
+  # Display Manager
+  services.xserver.displayManager.gdm = {
   	enable = true;
-	background = ./Birthday2024.png;
-
-	greeters.gtk = {
-		enable = true;
-
-		cursorTheme = {
-			package = pkgs.nordzy-cursor-theme;
-			name = "Nordzy-cursors";
-		};
-
-		theme = {
-			package = pkgs.nordic;
-			name = "Nordic";
-		};
-
-		clock-format = "%d-%m-%Y %H:%M";
-
-		indicators = [
-			"~host"
-			"~spacer"
-			"~clock"
-			"~spacer"
-			"~session"
-			"~language"
-			"~a11y"
-			"~power"
-		];
-
-		extraConfig = "
-			font-name=MonofurNerdFont \n
-			default-user-image=/etc/nixos/NekomiHead.png
-		";
-	};
+	wayland = true;
   };
-
-  #services.xserver.desktopManager.gnome.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
@@ -122,7 +88,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -167,6 +133,7 @@
   #hyprland
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     #nvidiaPatches = true;
     xwayland.enable = true;
   };
@@ -221,8 +188,8 @@
      home-manager
      neovim
 
-     lightdm
-     lightdm-gtk-greeter
+     gdm
+     gdm-settings
      nordzy-cursor-theme
      nordzy-icon-theme
      nordic
