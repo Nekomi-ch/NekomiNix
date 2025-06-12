@@ -17,6 +17,10 @@ Given I am an artist that just to happen to do a STEM degree, and of course insp
 makes me wanted to try to do my own custom rice.
 Now, not only I have gained knowledge as I fall into this rabbit hole, I am able to freely customize my computer with the freedom of open source.
 
+## Versions
+
+There are 2 branches with different themes. Branch named `main` is the original one with Nord theme. While `mainV2` uses the FujiIdol color palette that I have created.
+
 ## License
 
 The files and scripts in this repository are licensed under the MIT License, 
