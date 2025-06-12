@@ -1,4 +1,4 @@
-# NekomiOS-dots
+# NekomiNix
 
 ## Seen on YouTube! (Click photo for video)
 
