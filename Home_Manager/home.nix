@@ -82,6 +82,7 @@
 		matlab-language-server
 		nil
 		ltex-ls
+		lua-language-server
   ];
 
 
