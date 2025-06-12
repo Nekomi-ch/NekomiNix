@@ -61,10 +61,13 @@
     axel
     tldr
 
+		#GTK APPS
+		papers
+		loupe
+
     #LaTeX
     texliveFull
     vimPlugins.vimtex
-    papers
 		zathura
 
     #random
