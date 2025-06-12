@@ -15,7 +15,7 @@
 	      ];
 
         open = [
-          {run = "okular $@"; block = true;}
+          {run = "papers $@"; block = true;}
         ];
       };
 

@@ -64,7 +64,7 @@
     #LaTeX
     texliveFull
     vimPlugins.vimtex
-    okular
+    papers
 		zathura
 
     #random
@@ -175,9 +175,6 @@
           new_optimizations = true;
         };
 
-        drop_shadow = "yes";
-        shadow_range = 4;
-        shadow_render_power = 3;
       };
 
       animations = {
@@ -185,7 +182,9 @@
       };
 
       windowrulev2 = [
-        "opacity 0.87 0.87,class:^(kitty)$"
+				"opacity 0.9 0.9,class:^(kitty)$"
+				#"opacity 1 1,class:^(kitty)$"
+
         "opacity 0.5 0.5,focus:0"
         "opacity 1 1,fullscreen:1"
         "opacity 1 1,class:^(librewolf)$"
@@ -209,6 +208,8 @@
         "$main, F, fullscreen"
         "$main, S, exec, hyprshot -o ~/Pictures/Screenshots -m region" #screenshot
         "$main, ESCAPE, exec, wlogout -b 5" #wlogout
+        "$main SHIFT, L, exec, brightnessctl s 35%" # For monitor accedentally goes to 0 by clicking
+
 
         #movement keybinds
         "$main, left, movefocus, l"
