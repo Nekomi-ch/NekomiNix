@@ -11,6 +11,7 @@
 #waybar {
   background: rgba(46, 52, 64, 0.5); /* 2e3440 nord0*/
   color: #cdd6f4;
+	border-radius: 10px;
 }
 
 /*nixos,workspaces,window,clock,sound,brightness,network,battery,hardware*/

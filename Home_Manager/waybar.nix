@@ -8,6 +8,10 @@
       mainBar = {
         layer = "top";
         position = "top";
+				margin-top = 5;
+				#margin-bottom = 10;
+				margin-left = 10;
+				margin-right = 10;
 
         modules-left = ["custom/nixos" "hyprland/workspaces"];
         modules-center = ["hyprland/window" "clock" "keyboard-state"];
@@ -56,7 +60,7 @@
           "tooltip" = true;
           "tooltip-format" = "{specific_used:0.2f} GB / {specific_total:0.2f} GB";
 
-          "on-click" = "nautilus";
+          "on-click" = "nemo";
         };
 
         "hyprland/workspaces" = {
@@ -72,6 +76,16 @@
 
         "hyprland/window" = {
           "format" = "󰅬 {}";
+					"max-length" = 50;
+					"rewrite" = {
+						"󰅬 (.*) — LibreWolf" = "󰈹 $1";
+						"󰅬 (.*) - Discord" = " $1";
+						"󰅬 nvim (.*)" = " $1";
+						"󰅬 ~(.*)" = " $1";
+						"󰅬 Yazi: (.*)" = "󰈞 $1";
+						"󰅬 btop (.*)" = " $1";
+						"󰅬 " = "󰄛 ";
+					};
         };
 
         "clock" = {
