@@ -34,7 +34,7 @@
 
           drawer = {
             "transition_duration" = 500;
-            "transition-left-to-right" = true;
+            "transition-left-to-right" = false;
           };
         };
 

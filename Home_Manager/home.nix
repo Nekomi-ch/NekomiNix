@@ -128,8 +128,6 @@
   programs.home-manager.enable = true;
   
   #hyprland stuff
-
-
    
   wayland.windowManager.hyprland = {
     enable = true;
@@ -138,6 +136,11 @@
       "$main" = "SUPER";
 
       monitor = ",preferred,auto,1";
+
+			layerrule = [
+				"blur,waybar"
+				"ignorealpha 0.1, waybar"
+			];
 
       env = [
         "HYPRCURSOR_THEME,Nordzy-cursors"

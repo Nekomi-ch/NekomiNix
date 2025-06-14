@@ -5,12 +5,12 @@
     font-size: 17px;
     font-weight: normal;
     font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-    min-height: 24px;
+    min-height: 26px;
 }
 
 #waybar {
-  background: rgba(46, 52, 64, 0.5); /* 2e3440 nord0*/
-  color: #cdd6f4;
+  background: rgba(86, 85, 95, 0.2); /* 2e3440 nord0*/
+  color: #f6f0ff;
 	border-radius: 10px;
 }
 
@@ -22,38 +22,47 @@
 
 #custom-nixos {
   border-radius: 10px;
-  background-color: #3b4252; /*nord1*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: #5a85fe;
+  background-color: rgba(41,41,50,0.7); /*292932*/
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  color: #5e81ac;
-  margin-top: 6px;
+  color: #5a85fe;
 }
 
 #custom-nixos:hover {
-  color: #3b4252;
-  background-color: #5e81ac;
+  background-color: rgba(41,41,50,1);
+  color: #5a85fe;
 }
 
 #workspaces {
-   border-radius: 10px;
-   background-color: #3b4252;
-   font-size: 20px;
-   margin-left: 6px;
-   color: #88C0D0;
-   margin-top: 6px;
+	border-radius: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #29bcad;
+	background-color: rgba(41,41,50,0.7); /*292932*/
+  font-size: 20px;
+  margin-left: 6px;
+  color: #29bcad;
+}
+
+#workspaces button{
+  color: #29bcad;
 }
 
 #workspaces button.active {
-  background-color: #88C0D0;
-  color: #3b4252;
+  background-color: #29bcad;
+  color: rgba(41,41,50,1);
 }
 
 #workspaces button:hover {
-  background-color: #88C0D0;
-  color: #3b4252;
+  color: #29bcad;
+  background-color: rgba(41,41,50,1);
+	border-radius: 10px;
 }
 
 
@@ -71,7 +80,7 @@
   border-width: 2px;
   border-style: solid;
   border-radius: 10px;
-  border-color: #d8dee9;
+  border-color: #f6f0ff;
   font-size: 20px;
   padding-left: 5px;
   padding-right: 5px;
@@ -83,7 +92,7 @@
   border-width: 2px;
   border-style: solid;
   border-radius: 10px;
-  border-color: #d8dee9;
+  border-color: #f6f0ff;
   font-size: 20px;
   padding-left: 5px;
   padding-right: 5px;
@@ -96,91 +105,101 @@
 
 #pulseaudio {
   border-radius: 10px;
-  background-color: #3b4252; /*nord1*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: #55e354;
+	background-color: rgba(41,41,50,0.7); /*292932*/
   font-size: 20px;
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  color: #8fbcbb;
-  margin-top: 6px;
+  color: #55e354;
 }
 
 #pulseaudio:hover {
-  background-color: #8fbcbb;
-  color: #3b4252;
+	background-color: rgba(41,41,50,1); /*292932*/
+  color: #55e354;
 }
 
 
 #backlight {
   border-radius: 10px;
-  background-color: #3b4252; /*nord1*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: #f0bf48;
+	background-color: rgba(41,41,50,0.7); /*292932*/
   font-size: 20px;
   padding-left: 5px;
   padding-right: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  color: #a3be8c;
-  margin-top: 6px;
+  color: #f0bf48;
 }
 
 #backlight:hover {
-  background-color: #a3be8c;
-  color: #3b4252;
+	background-color: rgba(41,41,50,1); /*292932*/
+  color: #f0bf48;
 }
 
 
 #network {
   border-radius: 10px;
-  background-color: #3b4252; /*nord1*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: #f2a24e;
+	background-color: rgba(41,41,50,0.7); /*292932*/
   font-size: 20px;
   padding-left: 5px;
   padding-right: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  color: #ebcb8b;
-  margin-top: 6px;
+  color: #f2a24e;
 }
 
 #network:hover {
-  background-color: #ebcb8b;
-  color: #3b4252; /*nord1*/
+  color: #f0bf48;
+	background-color: rgba(41,41,50,1); /*292932*/
 }
 
 
 #battery {
   border-radius: 10px;
-  background-color: #3b4252; /*nord1*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: #f66355;
+	background-color: rgba(41,41,50,0.7); /*292932*/
   font-size: 20px;
   padding-left: 5px;
   padding-right: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  color: #d08770;
-  margin-top: 6px;
+  color: #f66355;
 }
 
 #battery:hover {
-  background-color: #d08770;
-  color: #3b4252; /*nord1*/
+	background-color: rgba(41,41,50,1); /*292932*/
+  color: #f66355;
 }
 
 
 #cpu,#memory,#disk,#temperature {
   border-radius: 10px;
-  background-color: #3b4252; /*nord1*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: #f6b3bf;
+	background-color: rgba(41,41,50,0.7); /*292932*/
   font-size: 20px;
   padding-left: 5px;
   padding-right: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  color: #bf616a;
-  margin-top: 6px;
+  color: #f6b3bf;
 }
 
 #cpu:hover,#memory:hover,#disk:hover,#temperature:hover {
-  background-color: #bf616a;
-  color: #3b4252; /*nord1*/
+	background-color: rgba(41,41,50,1); /*292932*/
+  color: #f6b3bf;
 }
 
 
