@@ -2,7 +2,11 @@
   programs.fish = {
     enable = true;
 
-    interactiveShellInit = "set -U fish_greeting";  
+    interactiveShellInit = "
+			set -U fish_greeting \n
+			eval (ssh-agent -c) \n
+			clear
+		";  
 
     shellAbbrs = {
       ls = "lsd";
