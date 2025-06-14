@@ -76,6 +76,11 @@
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
+    enableSSHSupport = true;
+    settings = {
+	default-cache-ttl = 86400;
+	max-cache-ttl = 86400;
+    };
   };
 
   # Configure keymap in X11
