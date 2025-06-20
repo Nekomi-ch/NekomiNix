@@ -16,7 +16,7 @@
 			neofetch = "fastfetch";
 			fetch = "fastfetch";
 
-			ssh-act = "eval (ssh-agent -c)";
+			ssh-act = "eval (ssh-agent -c) && ssh-add";
     };
     # shellInit = "tmux";
   };

@@ -13,9 +13,5 @@
       setw -g pane-base-index 1
       "
     ;
-
-    plugins = with pkgs.tmuxPlugins; [
-      nord
-    ];
   };
 }

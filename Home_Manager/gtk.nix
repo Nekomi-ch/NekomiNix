@@ -2,8 +2,8 @@
   gtk = {
     enable = true;
 
-    cursorTheme.package = pkgs.nordzy-cursor-theme;
-    cursorTheme.name = "Nordzy-cursors";
+		cursorTheme.package = pkgs.nordzy-cursor-theme;
+		cursorTheme.name = "Nordzy-cursors";
 
     theme.package = pkgs.nordic;
     theme.name = "Nordic";

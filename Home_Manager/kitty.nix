@@ -1,6 +1,7 @@
 {...}: {
   programs.kitty = {
-    enable = true;
+		#My own custom theme
+    enable = false;
 
     font = { 
       name = "3270 nerd font";
