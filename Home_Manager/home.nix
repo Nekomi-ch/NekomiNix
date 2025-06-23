@@ -163,8 +163,8 @@
 
         layout = "dwindle";
 
-        "col.active_border" = "rgb(${config.colorScheme.palette.base08}) rgb(${config.colorScheme.palette.base0A}) 45deg";
-        "col.inactive_border" = "rgb(${config.colorScheme.palette.base07}) rgb(${config.colorScheme.palette.base0B}) 45deg";
+        "col.active_border" = "rgb(f66355) rgb(f2a24e) 45deg";
+        "col.inactive_border" = "rgb(5a85fe) rgb(29bcad) 45deg";
       };
 
     
