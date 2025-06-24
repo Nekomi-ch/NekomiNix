@@ -57,9 +57,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/London";
-  #time.timeZone = "Asia/Hong_Kong";
+  # Set your timezone.
+  #time.timeZone = "Europe/London";
+  time.timeZone = "Asia/Hong_Kong";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_HK.UTF-8";
@@ -188,10 +188,10 @@
      neovim
 
      gdm
-     gdm-settings
-     nordzy-cursor-theme
-     nordzy-icon-theme
-     nordic
+     bibata-cursors
+     whitesur-icon-theme
+     tokyonight-gtk-theme
+     gtk-engine-murrine
 
      libreoffice
      librewolf
