@@ -17,6 +17,8 @@
 			fetch = "fastfetch";
 
 			ssh-act = "eval (ssh-agent -c) && ssh-add";
+
+			waybar-reload = "pkill waybar && hyprctl dispatch exec waybar";
     };
     # shellInit = "tmux";
   };

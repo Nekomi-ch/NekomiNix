@@ -16,8 +16,8 @@ button {
 	background-position: center;
 	border-width: 2px;
   border-radius: 20px;
-  color: #f6f0ff;
-  border-color: #f6f0ff;
+  color: rgba(246, 240, 255, 1);
+  border-color: rgba(246, 240, 255, 1);
 }
 
 button:hover,button:focus {

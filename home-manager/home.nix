@@ -143,7 +143,7 @@
 			];
 
       env = [
-        "HYPRCURSOR_THEME,Nordzy-cursors"
+        "HYPRCURSOR_THEME,Bibata-Modern-Classic"
         "HYPRCURSOR_SIZE,24"
       ];
 
