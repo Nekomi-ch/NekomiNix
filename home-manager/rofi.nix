@@ -15,6 +15,6 @@
       show-icons = true;
     };
 
-    theme = "./nord.rasi";
+    theme = "~/.config/home-manager/NekomiNight.rasi";
   };
 }

@@ -1,0 +1,133 @@
+/**
+ * NekomiNight rofi theme
+ * Adapted by NekomiFujiwara <lilshotanekoboi@gmail.com>
+ */
+
+
+* {
+	Nekomi0: #090915;
+	Nekomi1: #191728;
+	Nekomi2: #292932;
+	Nekomi3: #3d3e52;
+	Nekomi4: #56555f;
+	Nekomi5: #928D9B;
+	Nekomi6: #d4d2e8;
+	Nekomi7: #f6f0ff;
+
+	NekomiPink: #f6b3bf;
+	NekomiRed: #b71d1a;
+	NekomiOrange: #dc6513;
+	NekomiYellow: #f0bf48;
+	NekomiGreen: #2c942a;
+	NekomiCyan: #29bcad;
+	NekomiBlue: #5a85fe;
+	NekomiMagenta: #a48ef1;
+
+	NekomiLightPink: #f6dee9;
+	NekomiLightRed: #f66355;
+	NekomiLightOrange: #f2a24e;
+	NekomiLightYellow: #ffe19d;
+	NekomiLightGreen: #55e354;
+	NekomiLightCyan: #4ae2b7;
+	NekomiLightBlue: #698cf3;
+	NekomiLightMagenta: #d3baff;
+
+
+
+    foreground:  @NekomiLightBlue;
+    backlight:   #ccffeedd;
+    background-color:  transparent;
+    
+    highlight:     underline bold #f6f0ff;
+
+    transparent: rgba(46,52,64,0);
+}
+
+window {
+    location: center;
+    anchor:   center;
+    transparency: "screenshot";
+    padding: 10px;
+    border:  0px;
+    border-radius: 6px;
+
+    background-color: @transparent;
+    spacing: 0;
+    children:  [mainbox];
+    orientation: horizontal;
+}
+
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+message {
+    color: @Nekomi0;
+    padding: 5;
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+    background-color: @NekomiLightBlue;
+}
+
+inputbar {
+    color: @Nekomi7;
+    padding: 11px;
+    background-color: @Nekomi2;
+
+    border: 1px;
+    border-radius:  6px 6px 0px 0px;
+    border-color: @NekomiBlue;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+
+prompt {
+    margin: 0px 1em 0em 0em ;
+}
+
+listview {
+    padding: 8px;
+    border-radius: 0px 0px 6px 6px;
+    border-color: @NekomiBlue;
+    border: 0px 1px 1px 1px;
+    background-color: rgba(9,9,21,0.9);
+    dynamic: false;
+}
+
+element {
+    padding: 3px;
+    vertical-align: 0.5;
+    border-radius: 4px;
+    background-color: transparent;
+    color: @foreground;
+    text-color: @Nekomi5;
+}
+
+element selected.normal {
+	background-color: @NekomiLightBlue;
+	text-color: @Nekomi0;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+button {
+    padding: 6px;
+    color: @foreground;
+    horizontal-align: 0.5;
+
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @foreground;
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @foreground;
+}
