@@ -35,6 +35,7 @@
     ./rofi.nix
     ./mako.nix
     ./fastfetch.nix
+		./ssh.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;

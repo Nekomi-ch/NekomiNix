@@ -1,2 +1,3 @@
 git.nix
+ssh.nix
 *.lock
