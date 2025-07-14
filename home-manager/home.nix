@@ -36,6 +36,7 @@
     ./mako.nix
     ./fastfetch.nix
 		./ssh.nix
+		./cursor.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
@@ -151,6 +152,7 @@
       exec-once = [
         "swww init && waybar"
         "brightnessctl s 35%"
+				"hyprctl setcursor Bibata-Modern-Classic 30"
         "[workspace 1 silent] kitty"
         "[workspace 2 silent] librewolf"
         "[workspace 3 silent] thunderbird"
