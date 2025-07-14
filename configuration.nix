@@ -83,6 +83,11 @@
     };
   };
 
+  programs.ssh = {
+	askPassword = "${pkgs.ssh-askpass-fullscreen}";
+  };
+
+
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
@@ -186,6 +191,7 @@
   environment.systemPackages = with pkgs; [
      home-manager
      neovim
+     tree
 
      gdm
      bibata-cursors
@@ -215,6 +221,8 @@
 
      gnome-keyring
      gnupg
+     ssh-askpass-fullscreen
+     pinentry-gnome3
      pass
      git-credential-manager
      networkmanagerapplet
@@ -289,7 +297,8 @@
   # services.envfs.enable = true;
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
