@@ -142,6 +142,7 @@
     xwayland.enable = true;
   };
 
+
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -169,7 +170,6 @@
     )
   ];
 
-
   networking.extraHosts =
   ''
     128.95.160.156 boinc-files.bakerlab.org
@@ -184,7 +184,6 @@
 	gpuOffset = -50;
 	temp = 70;
   };
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -274,6 +273,19 @@
 	maple-mono.Normal-NF-CN
   ];
 
+  #Chinese input
+  i18n.inputMethod = {
+    enable = true;	
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      rime-data
+      fcitx5-gtk
+      fcitx5-tokyonight
+      fcitx5-rime
+      fcitx5-chinese-addons
+    ];
+  };
+
   #Garbage collector
   #nix.gc = {
   #	automatic = true;
@@ -295,17 +307,11 @@
   # started in user sessions.
   # programs.mtr.enable = true;
 
-  # List services that you want to enable:
-
-  # services.envfs.enable = true;
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
 
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 80 443 ];
@@ -321,5 +327,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-  #hardware.graphics.enable = true;
-  #hardware.graphics.enable = true;
