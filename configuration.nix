@@ -268,7 +268,10 @@
 	nerd-fonts.monofur
 	noto-fonts-cjk-sans
 	noto-fonts-cjk-serif
-	vistafonts
+	vista-fonts
+	vista-fonts-cht
+	vista-fonts-chs
+	maple-mono.Normal-NF-CN
   ];
 
   #Garbage collector
