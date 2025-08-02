@@ -148,11 +148,14 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  # volunteer conputing
+
   services.boinc.enable = true;
   services.boinc.extraEnvPackages = with pkgs; [
 	libglvnd
 	brotli
   ];
+  services.foldingathome.enable = true;
 
   #nix-ld
   programs.nix-ld.enable = true;
@@ -191,6 +194,13 @@
      home-manager
      neovim
      tree
+
+     fcitx5
+     rime-data
+     fcitx5-gtk
+     fcitx5-tokyonight
+     fcitx5-rime
+     fcitx5-chinese-addons
 
      gdm
      bibata-cursors
@@ -252,6 +262,7 @@
      s-tui
      stress
      podman
+     fahclient
 
      matlab
      julia-bin
@@ -277,6 +288,7 @@
   i18n.inputMethod = {
     enable = true;	
     type = "fcitx5";
+    fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       rime-data
       fcitx5-gtk
