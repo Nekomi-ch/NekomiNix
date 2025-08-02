@@ -153,7 +153,7 @@
         "swww init && waybar"
         "brightnessctl s 35%"
 				"hyprctl setcursor Bibata-Modern-Classic 30"
-				"fcitx5 -d -r"
+				"fcitx5 -d --replace"
 				"fcitx5-remote -r"
         "[workspace 1 silent] kitty"
         "[workspace 2 silent] librewolf"

@@ -9,6 +9,6 @@
     };
     shellIntegration.enableFishIntegration = true;
 
-    theme = "Nord";
+    theme = "nord";
   };
 }
