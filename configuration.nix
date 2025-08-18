@@ -194,13 +194,6 @@
      neovim
      tree
 
-     fcitx5
-     rime-data
-     fcitx5-gtk
-     fcitx5-tokyonight
-     fcitx5-rime
-     fcitx5-chinese-addons
-
      gdm
      bibata-cursors
      whitesur-icon-theme
