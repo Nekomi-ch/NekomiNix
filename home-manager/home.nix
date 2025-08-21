@@ -156,7 +156,7 @@
 				"fcitx5 -d --replace"
 				"fcitx5-remote -r"
         "[workspace 1 silent] kitty"
-        "[workspace 2 silent] librewolf"
+        "[workspace 2 silent] brave"
         "[workspace 3 silent] thunderbird"
         #"[workspace 4 silent] boincmgr"
       ];

@@ -228,6 +228,8 @@
      git-credential-manager
      networkmanagerapplet
      seahorse
+     keepassxc
+     syncthing
      killall
 
      fish
