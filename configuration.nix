@@ -232,6 +232,10 @@
      syncthing
      killall
 
+     wireguard-tools
+     protonvpn-gui
+     protonvpn-cli_2
+
      fish
      starship
 
@@ -322,6 +326,7 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 80 443 ];
+    checkReversePath = false;
   };
 
 

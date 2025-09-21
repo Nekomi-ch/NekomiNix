@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.rofi.package = pkgs.rofi-wayland;
+	#programs.rofi.package = pkgs.rofi-wayland;
 
   programs.rofi = {
     enable = true;

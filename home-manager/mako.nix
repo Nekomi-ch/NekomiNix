@@ -2,17 +2,17 @@
   services.mako = {
     enable = true;
 
-    font = "Monofur Nerd Font 12";
-
-    backgroundColor = "#090915";
-    borderColor = "#f6f0ff";
-    borderRadius = 5;
-    borderSize = 5;
-    textColor = "#f6f0ff";
- 
-    icons = true;
-    ignoreTimeout = true;
-    defaultTimeout = 5000;
+		settings = {
+			ignore-timeout = true;
+    	default-timeout = 5000;
+    	icons = true;
+    	border-radius = 5;
+    	border-color = "#f6f0ff";
+    	border-size = 5;
+    	text-color = "#f6f0ff";
+    	font = "Monofur Nerd Font 12";
+    	background-color = "#090915";
+		};
 
   };
 }
