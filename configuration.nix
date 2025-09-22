@@ -129,7 +129,14 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = { 
+  	allowUnfree = true;
+	packageOverrides = pkgs: {
+    		unstable = import <nixos-unstable> {
+      			config = config.nixpkgs.config;
+    		};
+  	};
+  };
 
   programs.fish.enable = true;
 
@@ -154,7 +161,10 @@
 	libglvnd
 	brotli
   ];
-  services.foldingathome.enable = true;
+  services.foldingathome = {
+  	enable = true;
+	package = pkgs.unstable.fahclient;
+  };
 
   #nix-ld
   programs.nix-ld.enable = true;
@@ -260,7 +270,7 @@
      s-tui
      stress
      podman
-     fahclient
+     unstable.fahclient
      clinfo
 
      matlab
@@ -271,6 +281,8 @@
      nix-ld
      obs-studio
   ];
+
+  #unstable packages
 
   fonts.packages = with pkgs; [
 	nerd-fonts._3270
