@@ -3,7 +3,7 @@
     enable = true;
     
     settings = {
-      manager = {
+      mgr = {
         show_hidden = true;
 	      sort_by = "natural";
 	      sort_sensitive = true;
