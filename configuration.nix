@@ -57,8 +57,8 @@
   networking.networkmanager.enable = true;
 
   # Set your timezone.
-  #time.timeZone = "Europe/London";
-  time.timeZone = "Asia/Hong_Kong";
+  time.timeZone = "Europe/London";
+  #time.timeZone = "Asia/Hong_Kong";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_HK.UTF-8";
@@ -67,7 +67,7 @@
   services.xserver.enable = true;
 
   # Display Manager
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
   	enable = true;
 	wayland = true;
   };
@@ -211,6 +211,7 @@
      gtk-engine-murrine
 
      libreoffice
+     onlyoffice-desktopeditors
      librewolf
      brave
      git
@@ -228,7 +229,8 @@
      nsxiv
 
      gcc
-     python3Full
+     gfortran
+     xorg.libX11
 
      gnome-keyring
      gnupg
@@ -244,7 +246,6 @@
 
      wireguard-tools
      protonvpn-gui
-     protonvpn-cli_2
 
      fish
      starship
@@ -253,9 +254,10 @@
      udiskie
 
   #  hyprland
-     rofi-wayland	
+     rofi
      wofi
-     swww
+     hyprpaper
+     waypaper
      mako
      waybar
      hyprlock
@@ -305,7 +307,7 @@
       fcitx5-gtk
       fcitx5-tokyonight
       fcitx5-rime
-      fcitx5-chinese-addons
+      qt6Packages.fcitx5-chinese-addons
     ];
   };
 

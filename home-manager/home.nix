@@ -150,7 +150,7 @@
       ];
 
       exec-once = [
-        "swww init && waybar"
+				"hyprctl exec dispatch waybar"
         "brightnessctl s 35%"
 				"hyprctl setcursor Bibata-Modern-Classic 30"
 				"fcitx5 -d --replace"
