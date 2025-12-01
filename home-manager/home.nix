@@ -37,6 +37,7 @@
     ./fastfetch.nix
 		./ssh.nix
 		./cursor.nix
+		./hyprpaper.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
