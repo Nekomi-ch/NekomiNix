@@ -151,7 +151,6 @@
       ];
 
       exec-once = [
-				"hyprctl exec dispatch waybar"
         "brightnessctl s 35%"
 				"hyprctl setcursor Bibata-Modern-Classic 30"
 				"fcitx5 -d --replace"
@@ -159,6 +158,7 @@
         "[workspace 1 silent] kitty"
         "[workspace 2 silent] brave"
         "[workspace 3 silent] thunderbird"
+				"waybar"
         #"[workspace 4 silent] boincmgr"
       ];
       
