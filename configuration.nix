@@ -72,6 +72,8 @@
 	wayland = true;
   };
 
+  # Security Stuff
+
   services.gnome.gnome-keyring.enable = true;
 
   programs.gnupg.agent = {
