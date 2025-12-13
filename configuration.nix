@@ -84,10 +84,6 @@
     };
   };
 
-  programs.ssh = {
-	askPassword = "${pkgs.ssh-askpass-fullscreen}";
-  };
-
 
   # Configure keymap in X11
   services.xserver = {
@@ -236,7 +232,6 @@
      gnome-keyring
      gnupg
      authenticator
-     ssh-askpass-fullscreen
      pinentry-gnome3
      pass
      git-credential-manager
