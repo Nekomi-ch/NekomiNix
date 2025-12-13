@@ -72,6 +72,8 @@
 	wayland = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
