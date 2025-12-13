@@ -230,10 +230,10 @@
 
      gcc
      gfortran
-     xorg.libX11
 
      gnome-keyring
      gnupg
+     authenticator
      ssh-askpass-fullscreen
      pinentry-gnome3
      pass
