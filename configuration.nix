@@ -124,7 +124,7 @@
   users.users.nekomi = {
     isNormalUser = true;
     description = "nekomi";
-    extraGroups = [ "networkmanager" "wheel" "input" "boinc" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "boinc" "podman" ];
     shell = pkgs.fish;
   };
 
@@ -195,6 +195,12 @@
 	coreOffset = 0;
 	gpuOffset = -50;
 	temp = 70;
+  };
+
+  # Podman
+  virtualisation.podman = {
+  	enable = true;
+  	dockerCompat = true;
   };
 
   # List packages installed in system profile. To search, run:
@@ -281,6 +287,8 @@
 
      nix-ld
      obs-studio
+
+     jmtpfs
   ];
 
   #unstable packages
