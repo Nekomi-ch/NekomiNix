@@ -227,6 +227,7 @@
      fastfetch
      yazi
      discord
+     fluffychat
      vesktop
      zip
      unzip
