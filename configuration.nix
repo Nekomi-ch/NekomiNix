@@ -42,6 +42,7 @@
       ./hardware-configuration.nix
     ];
 
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -169,6 +170,24 @@
   #nix-ld
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
+  	libGLU
+	libGL
+	libx11
+	gtk3
+	pango
+	cairo
+	gdk-pixbuf
+	glib
+	libxxf86vm
+	libsm
+	libxkbcommon
+	libxtst
+	fontconfig
+	libpng
+	libjpeg_original
+	libjpeg8
+	libtiff
+	libdng
   ];
 
   nixpkgs.overlays = let
@@ -237,6 +256,7 @@
 
      gcc
      gfortran
+     python312
 
      gnome-keyring
      gnupg
@@ -285,6 +305,8 @@
      julia-bin
      cmake
      libpkgconf
+     rdesktop
+     remmina
 
      nix-ld
      obs-studio
