@@ -161,6 +161,8 @@
   services.boinc.extraEnvPackages = with pkgs; [
 	libglvnd
 	brotli
+	gmp
+	ocl-icd
   ];
   services.foldingathome = {
   	enable = true;
@@ -173,21 +175,11 @@
   	libGLU
 	libGL
 	libx11
-	gtk3
 	pango
 	cairo
-	gdk-pixbuf
 	glib
-	libxxf86vm
-	libsm
-	libxkbcommon
-	libxtst
-	fontconfig
-	libpng
-	libjpeg_original
-	libjpeg8
-	libtiff
-	libdng
+	gmp
+	ocl-icd
   ];
 
   nixpkgs.overlays = let
@@ -300,6 +292,9 @@
      podman
      unstable.fahclient
      clinfo
+ 
+     gmp
+     ocl-icd
 
      matlab
      julia-bin
