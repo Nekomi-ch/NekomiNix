@@ -163,6 +163,7 @@
 	brotli
 	gmp
 	ocl-icd
+	podman
   ];
   services.foldingathome = {
   	enable = true;
@@ -180,6 +181,7 @@
 	glib
 	gmp
 	ocl-icd
+	gdk-pixbuf
   ];
 
   nixpkgs.overlays = let
@@ -204,7 +206,7 @@
   	enable = true;
 	package = pkgs.undervolt;
 	coreOffset = 0;
-	gpuOffset = -50;
+	gpuOffset = 0;
 	temp = 70;
   };
 
@@ -213,6 +215,16 @@
   	enable = true;
   	dockerCompat = true;
   };
+
+  #Asus
+  services.supergfxd.enable = true;
+
+  services.asusd = {
+      enable = true;
+      enableUserService = true;
+  };
+
+  services.lact.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -287,6 +299,8 @@
 
      boinctui
      undervolt
+     asusctl
+     lact
      s-tui
      stress
      podman
