@@ -38,17 +38,15 @@
 
         label = [
           {
-            #zindex = 1;
-
             monitor = "";
-            text = "NekomiNix $TIME";
-            text_align = "right";
+            text = "$TIME";
+            text_align = "center";
             color ="#f6f0ff";
             font_size = 75;
             font_family = "Monofur Nerd Font";
 
-            position = "-900,500";
-            halign = "center";
+            position = "-100,100";
+            halign = "right";
             valign = "bottom";
 
             shadow_passes = 3;
@@ -56,7 +54,6 @@
             shadow_color = "#191728";
           }
         ];
-
 
 
         input-field = [
@@ -71,7 +68,7 @@
             inner_color = "#f6f0ff";
             font_color = "#191728";
             fade_on_empty = "false";
-            placeholder_text = "<i>Input Password...</i>"; # Text rendered in the input box when it's empty.
+            placeholder_text = "<i>Password for $USER ...</i>"; # Text rendered in the input box when it's empty.
             hide_input = "false";
             rounding = -1; # -1 means complete rounding (circle/oval)
             check_color = "#ffe19d";

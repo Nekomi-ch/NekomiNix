@@ -89,6 +89,8 @@
 		nil
 		ltex-ls
 		lua-language-server
+
+		lunar-client
   ];
 
 
