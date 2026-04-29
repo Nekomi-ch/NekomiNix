@@ -5,6 +5,11 @@
 		settings = {
 			logo = {
 				position = "left";
+				width = 40;
+				source = "~/Pictures/Nixos/Icons/nixLogo.png";
+				padding = {
+					left = 1;
+				};
 			};
 
 			display = {
