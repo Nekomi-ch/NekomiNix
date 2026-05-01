@@ -2,6 +2,9 @@
 
 { config, pkgs, ... }:{
 
+  #KErnel fix due to copyfail
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   #NVIDIA 
 
   boot.kernelParams = [
