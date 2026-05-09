@@ -1,3 +1,7 @@
+>[!WARNING]
+>This dotfiles has been migrated to [Codeberg](https://codeberg.org/nekomi_ch/NekomiNix)
+>Hence this repo will be archived.
+
 # NekomiNix
 
 ## Seen on YouTube! (Click photo for video)
